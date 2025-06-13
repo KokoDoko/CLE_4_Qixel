@@ -31,7 +31,6 @@ export class Player extends Actor {
         this.graphics.add("rundown", runDown);
         this.graphics.use(idle); // <-- Now it's defined
     }
-    //sss
 
     onPreUpdate(engine) {
         let xspeed = 0;
