@@ -1,7 +1,10 @@
 import '../css/style.css'
-import { Engine, DisplayMode } from "excalibur"
+import { Actor, Engine, Vector, DisplayMode } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 import { Player } from './player.js'
+import { BoundingBox } from "excalibur"
+import { PoolScene } from './poolgebied/pool.js'
+import { MainScene } from './mainscene.js'
 
 export class Game extends Engine {
 
@@ -18,19 +21,22 @@ export class Game extends Engine {
 
     startGame() {
         console.log("start de game!")
-const fish = new Actor()
+        const fish = new Actor()
         fish.graphics.use(Resources.Fish.toSprite())
         fish.pos = new Vector(500, 300)
         fish.vel = new Vector(-10,0)
         fish.events.on("exitviewport", (e) => this.fishLeft(e))
         this.add(fish)
-        const player = new Player()
-        player.events.on("exitviewport", (e) => this.fishLeft(e))
-        this.add(player)
+        this.createPlayer()
     }
 
     fishLeft(e) {
         e.target.pos = new Vector(1350, 300)
+    }
+
+    createPlayer() {
+        const player = new Player();
+        this.add(player)
     }
 }
 
