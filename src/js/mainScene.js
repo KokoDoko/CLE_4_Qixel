@@ -1,5 +1,7 @@
 import { Scene, Actor, Vector, Color } from "excalibur";
 import { Resources } from "./resources.js";
+import { Player } from './player.js'
+
 
 export class MainScene extends Scene {
     onActivate(ctx) {
@@ -45,5 +47,14 @@ export class MainScene extends Scene {
         this.add(redFish);
         this.add(pinkFish);
         this.add(blueFish);
+        this.createPlayer();
     }
+    createPlayer() {
+        const player = new Player()
+        this.add(player)
+        this.currentScene.add(player)
+        console.log("spawn");
+        console.log(player);
+    }
+
 }

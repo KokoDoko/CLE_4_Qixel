@@ -51,8 +51,6 @@ export class Game extends Engine {
         this.currentScene.add(player)
         console.log("spawn");
         console.log(player);
-
-
         }
     }
     
