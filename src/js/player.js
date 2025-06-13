@@ -1,13 +1,14 @@
-import { Actor, Engine, Vector, Keys } from "excalibur"
+import { Actor, Engine, Vector, Keys, CollisionType } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 
-export class Fish extends Actor {
+export class Player extends Actor {
 
     constructor() {
-        super()
-        this.graphics.use(Resources.Fish.toSprite())
-         this.pos = new Vector(200, 200)
-        // fish.vel = new Vector(-10,0)
+        super({ width: Resources.Player.width, height: Resources.Player.height, collisionType: CollisionType.Active })
+        this.graphics.use(Resources.Player.toSprite())
+        this.scale = new Vector(0.3, 0.3)
+        this.pos = new Vector(500, 300)
+       
     }
 
     
