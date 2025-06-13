@@ -1,11 +1,11 @@
 import { Actor, Engine, Vector, CollisionType } from "excalibur"
 import { Resources, ResourceLoader } from '../resources.js'
 
-export class Bubble extends Actor {
+export class Mine extends Actor {
 
     constructor() {
-        super({width: Resources.Bubble.width, height: Resources.Bubble.height, collisionType: CollisionType.Fixed})
-        this.graphics.use(Resources.Bubble.toSprite())
+        super({width: Resources.Mine.width, height: Resources.Mine.height, collisionType: CollisionType.Fixed})
+        this.graphics.use(Resources.Mine.toSprite())
          this.pos = new Vector(500, 300)
          this.scale = new Vector(1, 1)
         
