@@ -9,7 +9,6 @@ import { SavanneScene } from './savanne/savanne.js'
 import { MoerasScene } from './moeras/moeras.js'
 import { TropenScene } from './tropen/tropen.js'
 import { Mine } from './tropen/obstacle.js'
-import { LabBackground } from './lab/background.js'
 
 export class Game extends Engine {
     constructor() {
@@ -17,7 +16,7 @@ export class Game extends Engine {
             width: 1240,
             height: 920,
             maxFps: 60,
-            displayMode: DisplayMode.Fixed
+            displayMode: DisplayMode.FitScreen
         })
         this.start(ResourceLoader).then(() => this.startGame())
     }
@@ -31,9 +30,6 @@ export class Game extends Engine {
         this.add('tropen', new TropenScene())
         this.goToScene('game')
         this.createPlayer()
-
-        const labBackground = new LabBackground();
-        this.add(labBackground)
 
         const fish = new Actor()
         fish.graphics.use(Resources.Fish.toSprite())

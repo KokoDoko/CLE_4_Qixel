@@ -1,4 +1,4 @@
-import { Actor, CollisionType, DegreeOfFreedom, Vector } from "excalibur";
+import { Actor, Vector } from "excalibur";
 import { Resources } from "../resources.js";
 
 export class LabBackground extends Actor {
