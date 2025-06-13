@@ -10,6 +10,7 @@ export class Mine extends Actor {
          this.scale = new Vector(1, 1)
         
     }
+    
 
 
 }
