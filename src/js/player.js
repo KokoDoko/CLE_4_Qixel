@@ -1,4 +1,4 @@
-import { Actor, Engine, Vector, Keys, CollisionType, SpriteSheet, range, Animation, Axes, Buttons } from "excalibur"
+import { Actor, Engine, Vector, Keys, CollisionType, SpriteSheet, range, Animation, Axes, Buttons, Shape } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
  
 export class Player extends Actor {
@@ -10,8 +10,10 @@ export class Player extends Actor {
             collisionType: CollisionType.Active
         });
  
-        this.scale = new Vector(0.3, 0.3);
+        this.scale = new Vector(0.4, 0.4);
         this.pos = new Vector(500, 300);
+
+        this.collider.set(Shape.Box(130, 200));
  
         const runSheet = SpriteSheet.fromImageSource({
             image: Resources.Player,
