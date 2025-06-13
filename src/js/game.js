@@ -3,13 +3,19 @@ import { Engine, DisplayMode, Actor, Vector } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 import { PoolScene } from './poolgebied/pool.js'
 import { MainScene } from './mainscene.js'
+import { SavanneScene } from './savanne/savanne.js'
+import { MoerasScene } from './moeras/moeras.js'
+import { TropenScene } from './tropen/tropen.js'
+
+
+
 // import { Player } from './player.js'
-import { Bubble } from './tropen/obstacle.js'
+import { Mine } from './tropen/obstacle.js'
 
 export class Game extends Engine {
     constructor() {
         super({
-            width: 1280,
+            width: 1240,
             height: 920,
             maxFps: 60,
             displayMode: DisplayMode.Fixed
@@ -33,8 +39,11 @@ export class Game extends Engine {
         this.add(fish)
         // const player = new Player()
         // this.add(player)
-        let bubble = new Bubble()
-        this.add(bubble)
+        // let bubble = new Bubble()
+        // this.add(bubble)
+
+        let mine = new Mine()
+        this.add(mine)
     }
 }
 new Game()
