@@ -2,32 +2,48 @@ import { Scene, Actor, Vector, Color } from "excalibur";
 import { Resources } from "./resources.js";
 
 export class MainScene extends Scene {
-    onInitialize(engine) {
-        const pool = new Actor();
-        pool.graphics.use(Resources.Fish.toSprite());
-        pool.tint = new Color(Math.random() * 255, Math.random() * 255, Math.random() * 255)
+    onActivate(ctx) {
+        this.clear();
+        const greenFish = new Actor();
+        const greenSprite = Resources.Fish.toSprite();
+        greenSprite.tint = Color.Green;
+        greenFish.graphics.use(greenSprite);
+        greenFish.pos = new Vector(500, 100);
+        greenFish.vel = new Vector(-10, 0);
+        greenFish.on("pointerup", () => {
+            ctx.engine.goToScene('moeras');
+        });
 
-        pool.pos = new Vector(500, 300);
-        pool.vel = new Vector(-10, 0);
-        pool.events.on("exitviewport", (e) => {
-            pool.pos = new Vector(1350, 300);
+        const redFish = new Actor();
+        const redsprite = Resources.Fish.toSprite();
+        redsprite.tint = Color.Red;
+        redFish.graphics.use(redsprite);
+        redFish.pos = new Vector(500, 300);
+        redFish.on("pointerup", () => {
+            ctx.engine.goToScene('savanne');
         });
-        pool.on("pointerup", () => {
-            engine.goToScene('pool');
-        });
-        this.add(pool);
 
+        const pinkFish = new Actor();
+        const pinkSprite = Resources.Fish.toSprite();
+        pinkSprite.tint = Color.Pink;
+        pinkFish.graphics.use(pinkSprite);
+        pinkFish.pos = new Vector(500, 500);
+        pinkFish.on("pointerup", () => {
+            ctx.engine.goToScene('tropen');
+        });
 
-        const fish = new Actor();
-        fish.graphics.use(Resources.Fish.toSprite());
-        fish.pos = new Vector(500, 300);
-        fish.vel = new Vector(-10, 0);
-        fish.events.on("exitviewport", (e) => {
-            fish.pos = new Vector(1350, 300);
+        const blueFish = new Actor();
+        const blueSprite = Resources.Fish.toSprite();
+        blueSprite.tint = Color.Blue;
+        blueFish.graphics.use(blueSprite);
+        blueFish.pos = new Vector(500, 700);
+        blueFish.on("pointerup", () => {
+            ctx.engine.goToScene('pool');
         });
-        fish.on("pointerup", () => {
-            engine.goToScene('pool');
-        });
-        this.add(fish);
+
+        this.add(greenFish);
+        this.add(redFish);
+        this.add(pinkFish);
+        this.add(blueFish);
     }
 }

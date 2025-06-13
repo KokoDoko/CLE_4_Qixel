@@ -1,4 +1,8 @@
 import '../css/style.css'
+import { Actor, Engine, Vector, DisplayMode } from "excalibur"
+import { Resources, ResourceLoader } from './resources.js'
+import { Player } from './player.js'
+import { BoundingBox } from "excalibur"
 import { Engine, DisplayMode, Actor, Vector } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 import { PoolScene } from './poolgebied/pool.js'
@@ -25,23 +29,20 @@ export class Game extends Engine {
     }
 
     startGame() {
-<<<<<<< HEAD
         console.log("start de game!")
-=======
         this.add('game', new MainScene())
         this.add('pool', new PoolScene())
         this.add('savanne', new SavanneScene())
         this.add('moeras', new MoerasScene())
         this.add('tropen', new TropenScene())
-
         this.goToScene('game')
-
->>>>>>> 168510aec2f486730c84b7685cbacfc83fba81a9
         const fish = new Actor()
         fish.graphics.use(Resources.Fish.toSprite())
         fish.pos = new Vector(500, 300)
         fish.vel = new Vector(-10, 0)
         this.add(fish)
+        this.createPlayer()
+    }
         // const player = new Player()
         // this.add(player)
         // let bubble = new Bubble()
@@ -50,5 +51,10 @@ export class Game extends Engine {
         let mine = new Mine()
         this.add(mine)
     }
-}
+
+    createPlayer() {
+        const player = new Player();
+        this.add(player)
+    }
+    
 new Game()

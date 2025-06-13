@@ -1,7 +1,7 @@
 // import { Actor, Engine, Vector, Keys, CollisionType } from "excalibur"
 // import { Resources, ResourceLoader } from './resources.js'
 
-// export class Player extends Actor {
+export class Player extends Actor {
 
 //     constructor() {
 //         super({ width: Resources.Player.width, height: Resources.Player.height, collisionType: CollisionType.Active })
@@ -33,8 +33,8 @@
 //             this.graphics.flipHorizontal = true      // flip de sprite
 //         }
 
-//         this.vel = new Vector(xspeed, yspeed)
-//         //  console.log(this.score)
+        this.vel = new Vector(xspeed, yspeed)
+        //  console.log(this.score)
 
 //     }
 
