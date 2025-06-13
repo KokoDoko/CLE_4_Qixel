@@ -9,6 +9,7 @@ import { SavanneScene } from './savanne/savanne.js'
 import { MoerasScene } from './moeras/moeras.js'
 import { TropenScene } from './tropen/tropen.js'
 import { Mine } from './tropen/obstacle.js'
+import { LabBackground } from './lab/background.js'
 
 export class Game extends Engine {
     constructor() {
@@ -29,8 +30,10 @@ export class Game extends Engine {
         this.add('moeras', new MoerasScene())
         this.add('tropen', new TropenScene())
         this.goToScene('game')
-
         this.createPlayer()
+
+        const labBackground = new LabBackground();
+        this.add(labBackground)
 
         const fish = new Actor()
         fish.graphics.use(Resources.Fish.toSprite())
@@ -39,8 +42,8 @@ export class Game extends Engine {
         this.add(fish)
 
     }
-        // let bubble = new Bubble()
-        // this.add(bubble)
+    // let bubble = new Bubble()
+    // this.add(bubble)
 
 
     createPlayer() {
@@ -49,7 +52,7 @@ export class Game extends Engine {
         this.currentScene.add(player)
         console.log("spawn");
         console.log(player);
-        }
     }
-    
+}
+
 new Game()

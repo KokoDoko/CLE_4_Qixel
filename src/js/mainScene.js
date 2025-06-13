@@ -1,11 +1,16 @@
 import { Scene, Actor, Vector, Color } from "excalibur";
 import { Resources } from "./resources.js";
 import { Player } from './player.js'
+import { LabBackground } from "./lab/background.js";
 
 
 export class MainScene extends Scene {
     onActivate(ctx) {
         this.clear();
+
+        const labBackground = new LabBackground();
+        this.add(labBackground)
+
         const greenFish = new Actor();
         const greenSprite = Resources.Fish.toSprite();
         greenSprite.tint = Color.Green;
