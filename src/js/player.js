@@ -1,7 +1,7 @@
 import { Actor, Engine, Vector, Keys, SpriteSheet, range, Animation, CollisionType, Axes, Buttons } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 
-export class Player extends Actor {
+// export class Player extends Actor {
 
     constructor() {
         super({ width: Resources.Player.width, height: Resources.Player.height, collisionType: CollisionType.Active })
@@ -11,15 +11,8 @@ export class Player extends Actor {
         
         // fish.vel = new Vector(-10,0)s
 
-        const runSheet = SpriteSheet.fromImageSource({
-            image: Resources.Player,
-            grid: { rows: 1, columns: 12, spriteWidth:180, spriteHeight: 250 }
-        }) 
-        const idle = runSheet.sprites[1] // geen animatie
-        const runLeft = Animation.fromSpriteSheet(runSheet, range(3, 5), 120)
-        const runRight = Animation.fromSpriteSheet(runSheet, range(6, 8), 120)
-        const runUp = Animation.fromSpriteSheet(runSheet, range(10, 12), 120)
-        const runDown = Animation.fromSpriteSheet(runSheet, range(0, 2), 120)
+//         this.vel = new Vector(xspeed, yspeed)
+//         //  console.log(this.score)
 
         this.graphics.add("idle", idle)
         this.graphics.add("runleft", runLeft)
@@ -113,7 +106,7 @@ export class Player extends Actor {
 
     onCollisionEnd(event) {
 
-    }
+//     }
 
     gameOver() {
         this.pos.x = 400;
