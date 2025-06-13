@@ -18,7 +18,7 @@ export class Game extends Engine {
 
     startGame() {
         console.log("start de game!")
-const fish = new Actor()
+        const fish = new Actor()
         fish.graphics.use(Resources.Fish.toSprite())
         fish.pos = new Vector(500, 300)
         fish.vel = new Vector(-10,0)
