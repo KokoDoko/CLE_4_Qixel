@@ -42,8 +42,6 @@ export class Game extends Engine {
         // let bubble = new Bubble()
         // this.add(bubble)
 
-        // let mine = new Mine()
-        // this.add(mine)
 
     createPlayer() {
         const player = new Player()
