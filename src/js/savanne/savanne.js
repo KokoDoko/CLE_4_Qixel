@@ -1,7 +1,7 @@
 import { Actor, Scene, Vector } from "excalibur";
 import { Resources } from "../resources.js";
 
-export class PoolScene extends Scene {
+export class SavanneScene extends Scene {
     onInitialize(engine) {
         const bubble = new Actor({ pos: new Vector(640, 360) })
         bubble.graphics.use(Resources.Bubble.toSprite())

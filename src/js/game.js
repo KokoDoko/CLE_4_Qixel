@@ -20,8 +20,11 @@ export class Game extends Engine {
     startGame() {
         this.add('game', new MainScene())
         this.add('pool', new PoolScene())
-        this.goToScene('game')
+        this.add('savanne', new SavanneScene())
+        this.add('moeras', new MoerasScene())
+        this.add('tropen', new TropenScene())
 
+        this.goToScene('game')
 
         const fish = new Actor()
         fish.graphics.use(Resources.Fish.toSprite())
