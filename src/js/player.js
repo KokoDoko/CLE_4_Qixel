@@ -1,26 +1,37 @@
 import { Actor, Engine, Vector, Keys, SpriteSheet, range, Animation, CollisionType, Axes, Buttons } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 
-// export class Player extends Actor {
+export class Player extends Actor {
 
     constructor() {
-        super({ width: Resources.Player.width, height: Resources.Player.height, collisionType: CollisionType.Active })
-        this.graphics.use(Resources.Player.toSprite())
-        this.scale = new Vector(0.3, 0.3)
-        this.pos = new Vector(500, 300)
-        
-        // fish.vel = new Vector(-10,0)s
+        super({
+            width: Resources.Player.width,
+            height: Resources.Player.height,
+            collisionType: CollisionType.Active
+        });
 
-//         this.vel = new Vector(xspeed, yspeed)
-//         //  console.log(this.score)
+        this.scale = new Vector(0.3, 0.3);
+        this.pos = new Vector(500, 300);
 
-        this.graphics.add("idle", idle)
-        this.graphics.add("runleft", runLeft)
-        this.graphics.add("runright", runRight)
-        this.graphics.add("runup", runUp)
-        this.graphics.add("rundown", runDown)
-        this.graphics.use(idle)
+        const runSheet = SpriteSheet.fromImageSource({
+            image: Resources.Player,
+            grid: { rows: 1, columns: 12, spriteWidth: 180, spriteHeight: 250 }
+        });
+
+        const idle = runSheet.sprites[1];
+        const runLeft = Animation.fromSpriteSheet(runSheet, range(3, 5), 120);
+        const runRight = Animation.fromSpriteSheet(runSheet, range(6, 8), 120);
+        const runUp = Animation.fromSpriteSheet(runSheet, range(10, 11), 120);
+        const runDown = Animation.fromSpriteSheet(runSheet, range(0, 2), 120);
+
+        this.graphics.add("idle", idle);
+        this.graphics.add("runleft", runLeft);
+        this.graphics.add("runright", runRight);
+        this.graphics.add("runup", runUp);
+        this.graphics.add("rundown", runDown);
+        this.graphics.use(idle); // <-- Now it's defined
     }
+    
 
     onPreUpdate(engine) {
         let xspeed = 0;
@@ -77,12 +88,12 @@ import { Resources, ResourceLoader } from './resources.js'
             if (gamepad.isButtonPressed(Buttons.Face3)) this.interact();
         }
 
-        // Final velocity clamp
-        if (!vel.equals(Vector.Zero)) {
-            vel = vel.normalize().scale(speed);
-        }
+    // Final velocity clamp
+    if (!vel.equals(Vector.Zero)) {
+        vel = vel.normalize().scale(speed);
+    }
 
-        this.vel = vel;
+    this.vel = vel;
     }    
 
     jump() {
@@ -106,13 +117,13 @@ import { Resources, ResourceLoader } from './resources.js'
 
     onCollisionEnd(event) {
 
-//     }
+    }
+
 
     gameOver() {
         this.pos.x = 400;
         this.pos.y = 300;
         this.health = this.startHealth;
     }
-
-}
     
+}
