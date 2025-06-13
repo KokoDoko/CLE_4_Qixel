@@ -52,7 +52,7 @@ export class MainScene extends Scene {
     createPlayer() {
         const player = new Player()
         this.add(player)
-        this.currentScene.add(player)
+        this.add(player)
         console.log("spawn");
         console.log(player);
     }
