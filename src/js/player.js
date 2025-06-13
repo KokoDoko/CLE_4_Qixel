@@ -11,14 +11,14 @@ export class Player extends Actor {
 
         this.graphics.use(Resources.Player.toSprite())
         this.pos = new Vector(200, 200)
-        this.scale = new Vector(0.31,0.31)
-        
+        this.scale = new Vector(0.31, 0.31)
+
         // fish.vel = new Vector(-10,0)s
 
         const runSheet = SpriteSheet.fromImageSource({
             image: Resources.Player,
-            grid: { rows: 1, columns: 12, spriteWidth:180, spriteHeight: 250 }
-        }) 
+            grid: { rows: 1, columns: 12, spriteWidth: 180, spriteHeight: 250 }
+        })
         const idle = runSheet.sprites[1] // geen animatie
         const runLeft = Animation.fromSpriteSheet(runSheet, range(3, 5), 120)
         const runRight = Animation.fromSpriteSheet(runSheet, range(6, 8), 120)

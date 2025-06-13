@@ -1,37 +1,45 @@
 import '../css/style.css'
-import { Engine, DisplayMode } from "excalibur"
+import { Engine, DisplayMode, Actor, Vector } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
-import { Player } from './player.js'
+import { PoolScene } from './poolgebied/pool.js'
+import { MainScene } from './mainscene.js'
+// import { Player } from './player.js'
+import { Bubble } from './tropen/obstacle.js'
 
 export class Game extends Engine {
-
     constructor() {
-        super({ 
-            width: 1240,
+        super({
+            width: 1280,
             height: 920,
             maxFps: 60,
             displayMode: DisplayMode.Fixed
-         })
+        })
         this.start(ResourceLoader).then(() => this.startGame())
         // this.displayMode.pos = new Vector(500,300)
     }
 
     startGame() {
+<<<<<<< HEAD
         console.log("start de game!")
+=======
+        this.add('game', new MainScene())
+        this.add('pool', new PoolScene())
+        this.add('savanne', new SavanneScene())
+        this.add('moeras', new MoerasScene())
+        this.add('tropen', new TropenScene())
+
+        this.goToScene('game')
+
+>>>>>>> 168510aec2f486730c84b7685cbacfc83fba81a9
         const fish = new Actor()
         fish.graphics.use(Resources.Fish.toSprite())
         fish.pos = new Vector(500, 300)
-        fish.vel = new Vector(-10,0)
-        fish.events.on("exitviewport", (e) => this.fishLeft(e))
+        fish.vel = new Vector(-10, 0)
         this.add(fish)
-        const player = new Player()
-        player.events.on("exitviewport", (e) => this.fishLeft(e))
-        this.add(player)
-    }
-
-    fishLeft(e) {
-        e.target.pos = new Vector(1350, 300)
+        // const player = new Player()
+        // this.add(player)
+        let bubble = new Bubble()
+        this.add(bubble)
     }
 }
-
 new Game()
