@@ -25,9 +25,7 @@ export class Game extends Engine {
     }
 
     startGame() {
-<<<<<<< HEAD
         console.log("start de game!")
-=======
         this.add('game', new MainScene())
         this.add('pool', new PoolScene())
         this.add('savanne', new SavanneScene())
@@ -36,7 +34,6 @@ export class Game extends Engine {
 
         this.goToScene('game')
 
->>>>>>> 168510aec2f486730c84b7685cbacfc83fba81a9
         const fish = new Actor()
         fish.graphics.use(Resources.Fish.toSprite())
         fish.pos = new Vector(500, 300)
