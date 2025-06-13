@@ -8,39 +8,39 @@ export class Player extends Actor {
         this.graphics.use(Resources.Player.toSprite())
         this.scale = new Vector(0.3, 0.3)
         this.pos = new Vector(500, 300)
-       
+
     }
 
-    
-     onPreUpdate(engine) {
 
-         let xspeed = 0
-            let yspeed = 0
-            let kb = engine.input.keyboard
+    onPreUpdate(engine) {
 
-            if (kb.isHeld(Keys.W)) {
-                yspeed = -300
-            }
-            if (kb.isHeld(Keys.S)) {
-                yspeed = 300
-            }
-            if (kb.isHeld(Keys.A)) {
-                xspeed = -300
-                this.graphics.flipHorizontal = false       // flip de sprite
-            }
-            if (kb.isHeld(Keys.D)) {
-                xspeed = 300
-                this.graphics.flipHorizontal = true      // flip de sprite
-            }
+        let xspeed = 0
+        let yspeed = 0
+        let kb = engine.input.keyboard
 
-            this.vel = new Vector(xspeed, yspeed)
-            //  console.log(this.score)
-           
+        if (kb.isHeld(Keys.W)) {
+            yspeed = -300
+        }
+        if (kb.isHeld(Keys.S)) {
+            yspeed = 300
+        }
+        if (kb.isHeld(Keys.A)) {
+            xspeed = -300
+            this.graphics.flipHorizontal = false       // flip de sprite
+        }
+        if (kb.isHeld(Keys.D)) {
+            xspeed = 300
+            this.graphics.flipHorizontal = true      // flip de sprite
+        }
+
+        this.vel = new Vector(xspeed, yspeed)
+        //  console.log(this.score)
+
     }
 
 
 }
-import { Actor, Engine, Vector, Keys,SpriteSheet, range , Animation} from "excalibur"
+import { Actor, Engine, Vector, Keys, SpriteSheet, range, Animation } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 
 export class Player extends Actor {
@@ -49,14 +49,14 @@ export class Player extends Actor {
         super()
         this.graphics.use(Resources.Player.toSprite())
         this.pos = new Vector(200, 200)
-        this.scale = new Vector(0.31,0.31)
-        
+        this.scale = new Vector(0.31, 0.31)
+
         // fish.vel = new Vector(-10,0)s
 
         const runSheet = SpriteSheet.fromImageSource({
             image: Resources.Player,
-            grid: { rows: 1, columns: 12, spriteWidth:180, spriteHeight: 250 }
-        }) 
+            grid: { rows: 1, columns: 12, spriteWidth: 180, spriteHeight: 250 }
+        })
         const idle = runSheet.sprites[1] // geen animatie
         const runLeft = Animation.fromSpriteSheet(runSheet, range(3, 5), 120)
         const runRight = Animation.fromSpriteSheet(runSheet, range(6, 8), 120)
