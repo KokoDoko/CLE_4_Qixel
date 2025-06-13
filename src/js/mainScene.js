@@ -2,15 +2,16 @@ import { Scene, Actor, Vector, Color } from "excalibur";
 import { Resources } from "./resources.js";
 
 export class MainScene extends Scene {
-    onInitialize(engine) {
-
+    onActivate(ctx) {
+        this.clear();
         const greenFish = new Actor();
         const greenSprite = Resources.Fish.toSprite();
         greenSprite.tint = Color.Green;
         greenFish.graphics.use(greenSprite);
         greenFish.pos = new Vector(500, 100);
+        greenFish.vel = new Vector(-10, 0);
         greenFish.on("pointerup", () => {
-            engine.goToScene('moeras');
+            ctx.engine.goToScene('moeras');
         });
 
         const redFish = new Actor();
@@ -19,7 +20,7 @@ export class MainScene extends Scene {
         redFish.graphics.use(redsprite);
         redFish.pos = new Vector(500, 300);
         redFish.on("pointerup", () => {
-            engine.goToScene('savanne');
+            ctx.engine.goToScene('savanne');
         });
 
         const pinkFish = new Actor();
@@ -28,7 +29,7 @@ export class MainScene extends Scene {
         pinkFish.graphics.use(pinkSprite);
         pinkFish.pos = new Vector(500, 500);
         pinkFish.on("pointerup", () => {
-            engine.goToScene('tropen');
+            ctx.engine.goToScene('tropen');
         });
 
         const blueFish = new Actor();
@@ -37,7 +38,7 @@ export class MainScene extends Scene {
         blueFish.graphics.use(blueSprite);
         blueFish.pos = new Vector(500, 700);
         blueFish.on("pointerup", () => {
-            engine.goToScene('pool');
+            ctx.engine.goToScene('pool');
         });
 
         this.add(greenFish);
