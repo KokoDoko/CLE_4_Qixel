@@ -31,7 +31,7 @@ export class Player extends Actor {
         this.graphics.add("rundown", runDown);
         this.graphics.use(idle); // <-- Now it's defined
     }
-    
+    //sss
 
     onPreUpdate(engine) {
         let xspeed = 0;
@@ -88,13 +88,13 @@ export class Player extends Actor {
             if (gamepad.isButtonPressed(Buttons.Face3)) this.interact();
         }
 
-    // Final velocity clamp
-    if (!vel.equals(Vector.Zero)) {
-        vel = vel.normalize().scale(speed);
-    }
+        // Final velocity clamp
+        if (!vel.equals(Vector.Zero)) {
+            vel = vel.normalize().scale(speed);
+        }
 
-    this.vel = vel;
-    }    
+        this.vel = vel;
+    }
 
     jump() {
         console.log("Jump action triggered");
@@ -125,5 +125,5 @@ export class Player extends Actor {
         this.pos.y = 300;
         this.health = this.startHealth;
     }
-    
+
 }
