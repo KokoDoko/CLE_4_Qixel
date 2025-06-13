@@ -5,7 +5,7 @@ const Resources = {
     Fish: new ImageSource('images/fish.png'),
     Player: new ImageSource('images/player-sprite.png'),
     Bubble: new ImageSource('images/bubble.png'),
-    Mine: new ImageSource('images/mine.png')
+    Mine: new ImageSource('images/mine.png'),
 }
 
 const ResourceLoader = new Loader()
