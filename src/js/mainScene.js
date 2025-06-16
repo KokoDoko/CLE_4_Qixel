@@ -12,6 +12,9 @@ import { SwampDoor } from "./lab/swampDoor.js";
 import { TropenDoor } from "./lab/tropenDoor.js";
 import { PoolDoor } from "./lab/poolDoor.js";
 import { SavanneDoor } from "./lab/savanneDoor.js";
+import { LabBorderLeft } from "./lab/labBorderLeft.js";
+import { LabBorderRight } from "./lab/labBorderRight.js";
+import { LabBorderTop } from "./lab/labBorderTop.js";
 
 
 export class MainScene extends Scene {
@@ -51,45 +54,29 @@ export class MainScene extends Scene {
         let tropenDoor = new TropenDoor();
         this.add(tropenDoor)
 
-        // const redFish = new Actor();
-        // const redsprite = Resources.Fish.toSprite();
-        // redsprite.tint = Color.Red;
-        // redFish.graphics.use(redsprite);
-        // redFish.pos = new Vector(500, 300);
-        // redFish.on("pointerup", () => {
-        //     ctx.engine.goToScene('savanne');
-        // });
+        let labBorderLeft = new LabBorderLeft();
+        this.add(labBorderLeft)
 
-        // const pinkFish = new Actor();
-        // const pinkSprite = Resources.Fish.toSprite();
-        // pinkSprite.tint = Color.Pink;
-        // pinkFish.graphics.use(pinkSprite);
-        // pinkFish.pos = new Vector(500, 500);
-        // pinkFish.on("pointerup", () => {
-        //     ctx.engine.goToScene('tropen');
-        // });
+        let labBorderRight = new LabBorderRight();
+        this.add(labBorderRight)
 
-        // const blueFish = new Actor();
-        // const blueSprite = Resources.Fish.toSprite();
-        // blueSprite.tint = Color.Blue;
-        // blueFish.graphics.use(blueSprite);
-        // blueFish.pos = new Vector(500, 700);
-        // blueFish.on("pointerup", () => {
-        //     ctx.engine.goToScene('pool');
-        // });
+        let labBorderTop = new LabBorderTop();
+        this.add(labBorderTop)
 
-        // this.add(greenFish);
-        // this.add(redFish);
-        // this.add(pinkFish);
-        // this.add(blueFish);
-        this.createPlayer();
-    }
-    createPlayer() {
+        // this.createPlayer();
         const player = new Player()
         this.add(player)
-        this.add(player)
-        console.log("spawn");
-        console.log(player);
+        this.camera.strategy.lockToActor(player);
+        this.camera.zoom = 1.35;
+
+
     }
+    // createPlayer() {
+    //     const player = new Player()
+    //     this.add(player)
+    //     this.add(player)
+    //     console.log("spawn");
+    //     console.log(player);
+    // }
 
 }
