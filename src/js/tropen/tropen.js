@@ -28,7 +28,7 @@ export class TropenScene extends Scene {
         let monkey = new Monkey()
         this.add(monkey)
 
-         this.obstaclePositions = [];
+        this.obstaclePositions = [];
 
         this.positionObstacle(Palmtree, 5, this.obstaclePositions)
         this.positionObstacle(PurpleBush, 4, this.obstaclePositions)
