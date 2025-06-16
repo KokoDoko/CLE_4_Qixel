@@ -1,8 +1,10 @@
 import { Actor, Scene, Vector } from "excalibur";
 import { Resources } from "../resources.js";
-import { Mine } from './tree.js'
+import { Tree } from './tree.js'
 import { Player } from '../player.js'
 import { Bones } from './plant.js'
+import { Monkey } from './monkey.js'
+import { Mine } from './flower.js'
 
 export class TropenScene extends Scene {
 
@@ -20,15 +22,24 @@ export class TropenScene extends Scene {
         });
         this.add(bubble);
 
+        this.createPlayer()
+
+        let monkey = new Monkey()
+        this.add(monkey)
+
          this.obstaclePositions = [];
 
-        this.positionObstacle(Mine, 5, this.obstaclePositions)
+        this.positionObstacle(Tree, 5, this.obstaclePositions)
         this.positionObstacle(Bones, 4, this.obstaclePositions)
+        this.positionObstacle(Mine, 1, this.obstaclePositions)
+
+        // let mine = new Mine()
+        // this.add(mine)
 
         
 
 
-        this.createPlayer()
+
 
     }
 
