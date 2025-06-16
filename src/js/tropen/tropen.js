@@ -54,15 +54,7 @@ export class TropenScene extends Scene {
         this.height = new Vector(30, 0)
 
         this.add(player)
-        this.on("collisionstart", () => {
-            setTimeout(() => {
-                if (event.other === player) {
 
-                    engine.goToScene('game');
-                }
-            }, 2);
-        }
-        );
         const minX = 0;
         const maxX = 1240;
         const minY = 0;
