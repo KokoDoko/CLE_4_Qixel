@@ -1,6 +1,7 @@
 import { Scene, Actor, Vector, Color, CollisionType, BoundingBox } from "excalibur";
 import { Resources } from "./resources.js";
 import { Player } from './player.js'
+import { UI } from "./UI.js";
 import { LabBackground } from "./lab/background.js";
 import { Obstacle1 } from "./lab/obstacle1.js";
 import { Obstacle2 } from "./lab/obstacle2.js";
@@ -15,6 +16,7 @@ import { SavanneDoor } from "./lab/savanneDoor.js";
 import { LabBorderLeft } from "./lab/labBorderLeft.js";
 import { LabBorderRight } from "./lab/labBorderRight.js";
 import { LabBorderTop } from "./lab/labBorderTop.js";
+
 
 
 export class MainScene extends Scene {
@@ -63,10 +65,12 @@ export class MainScene extends Scene {
         let labBorderTop = new LabBorderTop();
         this.add(labBorderTop)
 
-        // this.createPlayer();
+        this.createPlayer();
+    }
+
+    createPlayer() {
         const player = new Player()
         this.add(player)
-
         const minX = 0;
         const maxX = 1240;
         const minY = 0;
@@ -75,14 +79,9 @@ export class MainScene extends Scene {
         this.camera.strategy.lockToActor(player);
         this.camera.strategy.limitCameraBounds(new BoundingBox(minX, minY, maxX, maxY));
         this.camera.zoom = 1.35;
+        console.log("spawn");
+        const playerUI = new UI(player)
+        this.add(playerUI)
     }
-
-    // createPlayer() {
-    //     const player = new Player()
-    //     this.add(player)
-    //     this.add(player)
-    //     console.log("spawn");
-    //     console.log(player);
-    // }
 
 }
