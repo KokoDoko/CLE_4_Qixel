@@ -1,7 +1,13 @@
-import { Scene, Actor, Vector, Color } from "excalibur";
+import { Scene, Actor, Vector, Color, CollisionType } from "excalibur";
 import { Resources } from "./resources.js";
 import { Player } from './player.js'
 import { LabBackground } from "./lab/background.js";
+import { Obstacle1 } from "./lab/obstacle1.js";
+import { Obstacle2 } from "./lab/obstacle2.js";
+import { Obstacle3 } from "./lab/obstacle3.js";
+import { Obstacle4 } from "./lab/obstacle4.js";
+import { Obstacle5 } from "./lab/obstacle5.js";
+import { Obstacle6 } from "./lab/obstacle6.js";
 
 
 export class MainScene extends Scene {
@@ -10,6 +16,24 @@ export class MainScene extends Scene {
 
         const labBackground = new LabBackground();
         this.add(labBackground)
+
+        let obstacle1 = new Obstacle1();
+        this.add(obstacle1)
+
+        let obstacle2 = new Obstacle2();
+        this.add(obstacle2)
+
+        let obstacle3 = new Obstacle3();
+        this.add(obstacle3)
+
+        let obstacle4 = new Obstacle4();
+        this.add(obstacle4)
+
+        let obstacle5 = new Obstacle5();
+        this.add(obstacle5)
+
+        let obstacle6 = new Obstacle6();
+        this.add(obstacle6)
 
         const greenFish = new Actor();
         const greenSprite = Resources.Fish.toSprite();
