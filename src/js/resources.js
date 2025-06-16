@@ -20,21 +20,10 @@ const Resources = {
     //placeholders
     Bones: new ImageSource('images/bones.png'),
     Mine: new ImageSource('images/mine.png'),
-    Bubble: new ImageSource('images/bubble.png'),
-    Fish: new ImageSource('images/fish.png'),
-
-    //player   
-    Player: new ImageSource('images/player-sprite.png'),
     Net: new ImageSource('images/tropen/grijs.png'),
+    Tree: new ImageSource('images/tropen/palmboom.png')
 
-    //tropen
-    Tropenbg: new ImageSource('images/tropen/junglebg.png'),
-    MutatedMonkey: new ImageSource('images/tropen/monkeyinfected-sprite.png'),
-    Palmtree: new ImageSource('images/tropen/palmboom.png'),
-    Orchid: new ImageSource('images/tropen/mockorch.png'),
-    Yellowstone: new ImageSource('images/tropen/rockyel.png'),
-    Purplebush: new ImageSource('images/tropen/paarse-struik.png'),
-    Purplebushberries: new ImageSource('images/tropen/paarse-struik-met-bessen.png')
+
 
 }
 
