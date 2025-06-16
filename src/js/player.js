@@ -84,64 +84,66 @@ export class Player extends Actor {
         //     let moveX = gamepad.getAxes(Axes.LeftStickX);
         //     let moveY = gamepad.getAxes(Axes.LeftStickY);
 
-            //     if (Math.abs(moveX) < deadzone) moveX = 0;
-            //     if (Math.abs(moveY) < deadzone) moveY = 0;
+        //     if (Math.abs(moveX) < deadzone) moveX = 0;
+        //     if (Math.abs(moveY) < deadzone) moveY = 0;
 
-            //     let moveDirection = new Vector(moveX, moveY);
+        //     let moveDirection = new Vector(moveX, moveY);
 
-            //     if (gamepad.isHeld(Buttons.DpadLeft)) {
-            //         xspeed = -300;
-            //         this.graphics.use('runleft');            
-            //     }
-            //     if (gamepad.isHeld(Buttons.DpadRight)) {
-            //         xspeed = 300;
-            //         this.graphics.use('runright');            
-            //     }
-            //     if (gamepad.isHeld(Buttons.DpadUp)) {
-            //         yspeed = -300;
-            //         this.graphics.use('runup');            
-            //     }
-            //     if (gamepad.isHeld(Buttons.DpadDown)) {
-            //         yspeed = 300;
-            //         this.graphics.use('rundown');            
-            //     }
+        //     if (gamepad.isHeld(Buttons.DpadLeft)) {
+        //         xspeed = -300;
+        //         this.graphics.use('runleft');            
+        //     }
+        //     if (gamepad.isHeld(Buttons.DpadRight)) {
+        //         xspeed = 300;
+        //         this.graphics.use('runright');            
+        //     }
+        //     if (gamepad.isHeld(Buttons.DpadUp)) {
+        //         yspeed = -300;
+        //         this.graphics.use('runup');            
+        //     }
+        //     if (gamepad.isHeld(Buttons.DpadDown)) {
+        //         yspeed = 300;
+        //         this.graphics.use('rundown');            
+        //     }
 
-            //     if (!moveDirection.equals(Vector.Zero)) {
-            //         vel = moveDirection.normalize().scale(speed);
-            //     }
+        //     if (!moveDirection.equals(Vector.Zero)) {
+        //         vel = moveDirection.normalize().scale(speed);
+        //     }
 
-            //     if (gamepad.isButtonPressed(Buttons.Face1)) this.jump();
-            //     if (gamepad.isButtonPressed(Buttons.Face2)) this.attack();
-            //     if (gamepad.isButtonPressed(Buttons.Face3)) this.interact();
-            // }
+        //     if (gamepad.isButtonPressed(Buttons.Face1)) this.jump();
+        //     if (gamepad.isButtonPressed(Buttons.Face2)) this.attack();
+        //     if (gamepad.isButtonPressed(Buttons.Face3)) this.interact();
+        // }
 
-            // Final velocity clamp
-            if (!vel.equals(Vector.Zero)) {
-                vel = vel.normalize().scale(speed);
+        // Final velocity clamp
+        if (!vel.equals(Vector.Zero)) {
+            vel = vel.normalize().scale(speed);
+        }
+
+        this.vel = vel;
+    }
+}
+
+onInitialize(engine) {
+    this.on('collisionstart', (event) => this.hitMonkey(event))
+    this.on('collisionstart', (event) => this.hitFlower(event))
+
+}
+
+
+hitMonkey(event) {
+    if (event.other.owner instanceof Monkey) {
+        if (this.flowerCount > 0) {
+            this.flowerCount -= 1
+            console.log("lost flower")
+
+            if (this.scene) {
+                this.scene.positionObstacle(Orchid, 1, this.scene.obstaclePositions);
             }
-
-            this.vel = vel;
         }
     }
+}
 
-    onInitialize(engine) {
-        this.on('collisionstart', (event) => this.hitMonkey(event))
-        this.on('collisionstart', (event) => this.hitFlower(event))
-
-    }
-
-    hitMonkey(event) {
-        if (event.other.owner instanceof Monkey) {
-            if (this.flowerCount > 0) {
-                this.flowerCount -= 1
-                console.log("lost flower")
-
-                if (this.scene) {
-                    this.scene.positionObstacle(Orchid, 1, this.scene.obstaclePositions);
-                }
-            }
-        }
-    }
 
     hitFlower(event) {
         if (event.other.owner instanceof Orchid) {
@@ -152,17 +154,20 @@ export class Player extends Actor {
         }
     }
 
+
     jump() {
         console.log("Jump action triggered");
         // Implement jump logic here (e.g., apply upward velocity if grounded)
     }
+
 
     attack() {
         console.log("Attack action triggered");
         // Implement attack logic here (e.g., play animation, detect hit)
     }
 
-    catch() {
+
+    catch () {
         // let b = new Net()
         // b.pos = new Vector(this.pos.x, this.pos.y)
         // this.scene.add(b)
@@ -172,6 +177,7 @@ export class Player extends Actor {
         this.scene.add(net);
 
     }
+
 
     interact() {
         console.log("Interact action triggered");
@@ -194,4 +200,4 @@ export class Player extends Actor {
         this.health = this.startHealth;
     }
 
-}
+
