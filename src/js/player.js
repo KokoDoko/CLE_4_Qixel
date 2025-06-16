@@ -1,7 +1,7 @@
 import { Actor, Engine, Vector, Keys, CollisionType, SpriteSheet, range, Animation, Axes, Buttons, Shape } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 import { Monkey } from './tropen/monkey.js'
-import { Mine } from './tropen/flower.js'
+import { Orchid } from './tropen/flower.js'
 import { Net } from './tropen/net.js'
 
 export class Player extends Actor {
@@ -136,7 +136,7 @@ export class Player extends Actor {
                 console.log("lost flower")
 
                 if (this.scene && typeof this.scene.positionObstacle === "function") {
-                    this.scene.positionObstacle(Mine, 1, this.scene.obstaclePositions);
+                    this.scene.positionObstacle(Orchid, 1, this.scene.obstaclePositions);
                 }
 
 
@@ -147,7 +147,7 @@ export class Player extends Actor {
     }
 
     hitFlower(event) {
-        if (event.other.owner instanceof Mine) {
+        if (event.other.owner instanceof Orchid) {
             console.log("got flower")
             event.other.owner.kill()
             this.flowerCount += 1

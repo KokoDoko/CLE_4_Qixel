@@ -34,9 +34,6 @@ export class TropenScene extends Scene {
         this.positionObstacle(PurpleBush, 4, this.obstaclePositions)
         this.positionObstacle(Orchid, 1, this.obstaclePositions)
 
-        // let mine = new Mine()
-        // this.add(mine)
-
         
 
 

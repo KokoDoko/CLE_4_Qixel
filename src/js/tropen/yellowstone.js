@@ -1,3 +1,6 @@
+import { Actor, Scene, Vector } from "excalibur";
+import { Resources } from "../resources.js";
+
 export class YellowStone extends Actor {
 
     constructor() {
