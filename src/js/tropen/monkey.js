@@ -1,5 +1,6 @@
 import { Actor, Engine, Vector, Keys, CollisionType, SpriteSheet, range, Animation, Axes, Buttons, Shape } from "excalibur"
 import { Resources, ResourceLoader } from '../resources.js'
+import { Net } from './net.js'
  
 export class Monkey extends Actor {
  
@@ -87,8 +88,13 @@ export class Monkey extends Actor {
         this.graphics.flipHorizontal = true;
     }
 
-    
     }
+
+     onInitialize(engine) {
+        this.on('collisionstart', (event) => this.hitNet(event))
+
+    }
+
  
  
     attack() {
@@ -103,6 +109,15 @@ export class Monkey extends Actor {
  
     onCollisionEnd(event) {
  
+    }
+
+    hitNet(event){
+         if (event.other.owner instanceof Net) {
+            console.log("got ape")
+            event.other.owner.kill()
+            this.kill()
+
+         }
     }
  
  
