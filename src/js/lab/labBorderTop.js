@@ -7,7 +7,7 @@ export class LabBorderTop extends Actor {
         this.pos = new Vector(0, 450);
         this.body.collisionType = CollisionType.Fixed
         this.collider.set(
-            Shape.Box(1240, 2, Vector.Zero, new Vector(0, -460))
+            Shape.Box(1240, 2, Vector.Zero, new Vector(0, -400))
         );
     }
 }
