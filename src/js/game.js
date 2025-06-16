@@ -8,7 +8,7 @@ import { MainScene } from './mainscene.js'
 import { SavanneScene } from './savanne/savanne.js'
 import { MoerasScene } from './moeras/moeras.js'
 import { TropenScene } from './tropen/tropen.js'
-import { Mine } from './tropen/obstacle.js'
+// import { Mine } from './tropen/obstacle.js'
 
 export class Game extends Engine {
     constructor() {

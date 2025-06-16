@@ -8,6 +8,10 @@ import { Obstacle3 } from "./lab/obstacle3.js";
 import { Obstacle4 } from "./lab/obstacle4.js";
 import { Obstacle5 } from "./lab/obstacle5.js";
 import { Obstacle6 } from "./lab/obstacle6.js";
+import { SwampDoor } from "./lab/swampDoor.js";
+import { TropenDoor } from "./lab/tropenDoor.js";
+import { PoolDoor } from "./lab/poolDoor.js";
+import { SavanneDoor } from "./lab/savanneDoor.js";
 
 
 export class MainScene extends Scene {
@@ -35,47 +39,49 @@ export class MainScene extends Scene {
         let obstacle6 = new Obstacle6();
         this.add(obstacle6)
 
-        const greenFish = new Actor();
-        const greenSprite = Resources.Fish.toSprite();
-        greenSprite.tint = Color.Green;
-        greenFish.graphics.use(greenSprite);
-        greenFish.pos = new Vector(500, 100);
-        greenFish.vel = new Vector(-10, 0);
-        greenFish.on("pointerup", () => {
-            ctx.engine.goToScene('moeras');
-        });
+        let swampDoor = new SwampDoor();
+        this.add(swampDoor)
 
-        const redFish = new Actor();
-        const redsprite = Resources.Fish.toSprite();
-        redsprite.tint = Color.Red;
-        redFish.graphics.use(redsprite);
-        redFish.pos = new Vector(500, 300);
-        redFish.on("pointerup", () => {
-            ctx.engine.goToScene('savanne');
-        });
+        let savanneDoor = new SavanneDoor();
+        this.add(savanneDoor)
 
-        const pinkFish = new Actor();
-        const pinkSprite = Resources.Fish.toSprite();
-        pinkSprite.tint = Color.Pink;
-        pinkFish.graphics.use(pinkSprite);
-        pinkFish.pos = new Vector(500, 500);
-        pinkFish.on("pointerup", () => {
-            ctx.engine.goToScene('tropen');
-        });
+        let poolDoor = new PoolDoor();
+        this.add(poolDoor)
 
-        const blueFish = new Actor();
-        const blueSprite = Resources.Fish.toSprite();
-        blueSprite.tint = Color.Blue;
-        blueFish.graphics.use(blueSprite);
-        blueFish.pos = new Vector(500, 700);
-        blueFish.on("pointerup", () => {
-            ctx.engine.goToScene('pool');
-        });
+        let tropenDoor = new TropenDoor();
+        this.add(tropenDoor)
 
-        this.add(greenFish);
-        this.add(redFish);
-        this.add(pinkFish);
-        this.add(blueFish);
+        // const redFish = new Actor();
+        // const redsprite = Resources.Fish.toSprite();
+        // redsprite.tint = Color.Red;
+        // redFish.graphics.use(redsprite);
+        // redFish.pos = new Vector(500, 300);
+        // redFish.on("pointerup", () => {
+        //     ctx.engine.goToScene('savanne');
+        // });
+
+        // const pinkFish = new Actor();
+        // const pinkSprite = Resources.Fish.toSprite();
+        // pinkSprite.tint = Color.Pink;
+        // pinkFish.graphics.use(pinkSprite);
+        // pinkFish.pos = new Vector(500, 500);
+        // pinkFish.on("pointerup", () => {
+        //     ctx.engine.goToScene('tropen');
+        // });
+
+        // const blueFish = new Actor();
+        // const blueSprite = Resources.Fish.toSprite();
+        // blueSprite.tint = Color.Blue;
+        // blueFish.graphics.use(blueSprite);
+        // blueFish.pos = new Vector(500, 700);
+        // blueFish.on("pointerup", () => {
+        //     ctx.engine.goToScene('pool');
+        // });
+
+        // this.add(greenFish);
+        // this.add(redFish);
+        // this.add(pinkFish);
+        // this.add(blueFish);
         this.createPlayer();
     }
     createPlayer() {
