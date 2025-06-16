@@ -70,50 +70,50 @@ export class Player extends Actor {
             this.graphics.use('runright');
         }
 
-         if (kb.wasPressed(Keys.Space)) {
-               this.catch()
-            }
+        if (kb.wasPressed(Keys.Space)) {
+            this.catch()
+        }
 
         // Override vel now that xspeed/yspeed may have changed
         vel = new Vector(xspeed, yspeed);
 
         // Gamepad support
-        const gamepad = engine.input.gamepads.at(0);
-        if (gamepad) {
-            const deadzone = 0.2;
-            let moveX = gamepad.getAxes(Axes.LeftStickX);
-            let moveY = gamepad.getAxes(Axes.LeftStickY);
+        // const gamepad = engine.input.gamepads.at(0);
+        // if (gamepad) {
+        //     const deadzone = 0.2;
+        //     let moveX = gamepad.getAxes(Axes.LeftStickX);
+        //     let moveY = gamepad.getAxes(Axes.LeftStickY);
 
-            if (Math.abs(moveX) < deadzone) moveX = 0;
-            if (Math.abs(moveY) < deadzone) moveY = 0;
+        //     if (Math.abs(moveX) < deadzone) moveX = 0;
+        //     if (Math.abs(moveY) < deadzone) moveY = 0;
 
-            let moveDirection = new Vector(moveX, moveY);
+        //     let moveDirection = new Vector(moveX, moveY);
 
-            if (gamepad.isHeld(Buttons.DpadLeft)) {
-                xspeed = -300;
-                this.graphics.use('runleft');            
-            }
-            if (gamepad.isHeld(Buttons.DpadRight)) {
-                xspeed = 300;
-                this.graphics.use('runright');            
-            }
-            if (gamepad.isHeld(Buttons.DpadUp)) {
-                yspeed = -300;
-                this.graphics.use('runup');            
-            }
-            if (gamepad.isHeld(Buttons.DpadDown)) {
-                yspeed = 300;
-                this.graphics.use('rundown');            
-            }
+        //     if (gamepad.isHeld(Buttons.DpadLeft)) {
+        //         xspeed = -300;
+        //         this.graphics.use('runleft');            
+        //     }
+        //     if (gamepad.isHeld(Buttons.DpadRight)) {
+        //         xspeed = 300;
+        //         this.graphics.use('runright');            
+        //     }
+        //     if (gamepad.isHeld(Buttons.DpadUp)) {
+        //         yspeed = -300;
+        //         this.graphics.use('runup');            
+        //     }
+        //     if (gamepad.isHeld(Buttons.DpadDown)) {
+        //         yspeed = 300;
+        //         this.graphics.use('rundown');            
+        //     }
 
-            if (!moveDirection.equals(Vector.Zero)) {
-                vel = moveDirection.normalize().scale(speed);
-            }
+        //     if (!moveDirection.equals(Vector.Zero)) {
+        //         vel = moveDirection.normalize().scale(speed);
+        //     }
 
-            if (gamepad.isButtonPressed(Buttons.Face1)) this.jump();
-            if (gamepad.isButtonPressed(Buttons.Face2)) this.attack();
-            if (gamepad.isButtonPressed(Buttons.Face3)) this.interact();
-        }
+        //     if (gamepad.isButtonPressed(Buttons.Face1)) this.jump();
+        //     if (gamepad.isButtonPressed(Buttons.Face2)) this.attack();
+        //     if (gamepad.isButtonPressed(Buttons.Face3)) this.interact();
+        // }
 
         // Final velocity clamp
         if (!vel.equals(Vector.Zero)) {
@@ -165,10 +165,15 @@ export class Player extends Actor {
         // Implement attack logic here (e.g., play animation, detect hit)
     }
 
-    catch(){
-        let b = new Net()
-        b.pos = new Vector(this.pos.x, this.pos.y)
-        this.scene.add(b)
+    catch() {
+        // let b = new Net()
+        // b.pos = new Vector(this.pos.x, this.pos.y)
+        // this.scene.add(b)
+        // this.scene.add(new Net(this.pos.x + this.width/2, this.pos.y))
+        let direction = new Vector(1, 0);
+        let net = new Net(this.pos, direction);
+        this.scene.add(net);
+
     }
 
     interact() {

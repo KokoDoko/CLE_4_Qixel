@@ -18,7 +18,7 @@ const Resources = {
     Bones: new ImageSource('images/bones.png'),
     Monkey: new ImageSource('images/tropen/monkeyinfected-sprite.png'),
     Mine: new ImageSource('images/mine.png'),
-    Net: new ImageSource('images/tropen/grijs.png'),
+    Net: new ImageSource('images/tropen/net.png'),
     Tree: new ImageSource('images/tropen/palmboom.png')
 
 
