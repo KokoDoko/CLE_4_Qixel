@@ -6,14 +6,19 @@ import { Net } from './tropen/net.js'
 
 export class Player extends Actor {
 
-    flowerCount
+    flowerCount;
+    health;
 
-    constructor() {
+
+    constructor(health=3) {
         super({
             width: Resources.Player.width,
             height: Resources.Player.height,
             collisionType: CollisionType.Active
         });
+
+        this.health = health;
+        this.startHealth = health;
 
         this.scale = new Vector(0.4, 0.4);
         this.pos = new Vector(500, 300);
@@ -78,51 +83,62 @@ export class Player extends Actor {
         vel = new Vector(xspeed, yspeed);
 
         // Gamepad support
-        // const gamepad = engine.input.gamepads.at(0);
-        // if (gamepad) {
-        //     const deadzone = 0.2;
-        //     let moveX = gamepad.getAxes(Axes.LeftStickX);
-        //     let moveY = gamepad.getAxes(Axes.LeftStickY);
+        const gamepad = engine.input.gamepads.at(0);
+        if (gamepad) {
+            const deadzone = 0.2;
+            let moveX = gamepad.getAxes(Axes.LeftStickX);
+            let moveY = gamepad.getAxes(Axes.LeftStickY);
 
-        //     if (Math.abs(moveX) < deadzone) moveX = 0;
-        //     if (Math.abs(moveY) < deadzone) moveY = 0;
+            if (Math.abs(moveX) < deadzone) moveX = 0;
+            if (Math.abs(moveY) < deadzone) moveY = 0;
 
-        //     let moveDirection = new Vector(moveX, moveY);
+            let moveDirection = new Vector(moveX, moveY);
 
-        //     if (gamepad.isHeld(Buttons.DpadLeft)) {
-        //         xspeed = -300;
-        //         this.graphics.use('runleft');            
-        //     }
-        //     if (gamepad.isHeld(Buttons.DpadRight)) {
-        //         xspeed = 300;
-        //         this.graphics.use('runright');            
-        //     }
-        //     if (gamepad.isHeld(Buttons.DpadUp)) {
-        //         yspeed = -300;
-        //         this.graphics.use('runup');            
-        //     }
-        //     if (gamepad.isHeld(Buttons.DpadDown)) {
-        //         yspeed = 300;
-        //         this.graphics.use('rundown');            
-        //     }
+            if (gamepad.isButtonPressed(Buttons.DpadLeft)) {
+                xspeed = -300;
+                this.graphics.use('runleft');            
+            }
+            if (gamepad.isButtonPressed(Buttons.DpadRight)) {
+                xspeed = 300;
+                this.graphics.use('runright');            
+            }
+            if (gamepad.isButtonPressed(Buttons.DpadUp)) {
+                yspeed = -300;
+                this.graphics.use('runup');            
+            }
+            if (gamepad.isButtonPressed(Buttons.DpadDown)) {
+                yspeed = 300;
+                this.graphics.use('rundown');            
+            }
 
-        //     if (!moveDirection.equals(Vector.Zero)) {
-        //         vel = moveDirection.normalize().scale(speed);
-        //     }
+            if (!moveDirection.equals(Vector.Zero)) {
+                vel = moveDirection.normalize().scale(speed);
+            }
 
-        //     if (gamepad.isButtonPressed(Buttons.Face1)) this.jump();
-        //     if (gamepad.isButtonPressed(Buttons.Face2)) this.attack();
-        //     if (gamepad.isButtonPressed(Buttons.Face3)) this.interact();
-        // }
+            if (gamepad.isButtonPressed(Buttons.Face1)) this.jump();
+            if (gamepad.isButtonPressed(Buttons.Face2)) this.attack();
+            if (gamepad.isButtonPressed(Buttons.Face3)) this.interact();
+        }
 
         // Final velocity clamp
         if (!vel.equals(Vector.Zero)) {
             vel = vel.normalize().scale(speed);
         }
 
-            this.vel = vel;
+        this.vel = vel;
+
+        // Reduce health if colliding with an enemy every second
+        if (this.isCollidingWithEnemy && Date.now() - this.lastHitTime >= 1000) {
+            this.health -= this.collidingEnemy.attack;
+            this.lastHitTime = Date.now();
+            console.log(`Player health: ${this.health}`);
         }
-    
+
+        // Death check
+        if (this.health <= 0) {
+            this.gameOver();
+                }
+    }
 
 onInitialize(engine) {
     this.on('collisionstart', (event) => this.hitMonkey(event))
@@ -184,6 +200,10 @@ hitMonkey(event) {
         // Implement interact logic (e.g., talk to NPCs, open doors)
     }
 
+    takeDamage() {
+        this.health-=1;
+        console.log("Damage taken");
+    }
 
     onCollisionStart(event) {
         console.log('Geraakt door:', event.other);
