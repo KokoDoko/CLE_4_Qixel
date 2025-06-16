@@ -6,14 +6,19 @@ import { Net } from './tropen/net.js'
 
 export class Player extends Actor {
 
-    flowerCount
+    flowerCount;
+    health;
 
-    constructor() {
+
+    constructor(health=3) {
         super({
             width: Resources.Player.width,
             height: Resources.Player.height,
             collisionType: CollisionType.Active
         });
+
+        this.health = health;
+        this.startHealth = health;
 
         this.scale = new Vector(0.4, 0.4);
         this.pos = new Vector(500, 300);
@@ -89,19 +94,19 @@ export class Player extends Actor {
 
             let moveDirection = new Vector(moveX, moveY);
 
-            if (gamepad.isHeld(Buttons.DpadLeft)) {
+            if (gamepad.isButtonPressed(Buttons.DpadLeft)) {
                 xspeed = -300;
                 this.graphics.use('runleft');            
             }
-            if (gamepad.isHeld(Buttons.DpadRight)) {
+            if (gamepad.isButtonPressed(Buttons.DpadRight)) {
                 xspeed = 300;
                 this.graphics.use('runright');            
             }
-            if (gamepad.isHeld(Buttons.DpadUp)) {
+            if (gamepad.isButtonPressed(Buttons.DpadUp)) {
                 yspeed = -300;
                 this.graphics.use('runup');            
             }
-            if (gamepad.isHeld(Buttons.DpadDown)) {
+            if (gamepad.isButtonPressed(Buttons.DpadDown)) {
                 yspeed = 300;
                 this.graphics.use('rundown');            
             }
@@ -121,6 +126,18 @@ export class Player extends Actor {
         }
 
         this.vel = vel;
+
+        // Reduce health if colliding with an enemy every second
+        if (this.isCollidingWithEnemy && Date.now() - this.lastHitTime >= 1000) {
+            this.health -= this.collidingEnemy.attack;
+            this.lastHitTime = Date.now();
+            console.log(`Player health: ${this.health}`);
+        }
+
+        // Death check
+        if (this.health <= 0) {
+            this.gameOver();
+                }
     }
 
     onInitialize(engine) {
@@ -176,6 +193,10 @@ export class Player extends Actor {
         // Implement interact logic (e.g., talk to NPCs, open doors)
     }
 
+    takeDamage() {
+        this.health-=1;
+        console.log("Damage taken");
+    }
 
     onCollisionStart(event) {
         console.log('Geraakt door:', event.other);

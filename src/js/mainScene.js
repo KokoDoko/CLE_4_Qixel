@@ -1,6 +1,7 @@
 import { Scene, Actor, Vector, Color, CollisionType } from "excalibur";
 import { Resources } from "./resources.js";
 import { Player } from './player.js'
+import { UI } from "./UI.js";
 import { LabBackground } from "./lab/background.js";
 import { Obstacle1 } from "./lab/obstacle1.js";
 import { Obstacle2 } from "./lab/obstacle2.js";
@@ -12,6 +13,7 @@ import { SwampDoor } from "./lab/swampDoor.js";
 import { TropenDoor } from "./lab/tropenDoor.js";
 import { PoolDoor } from "./lab/poolDoor.js";
 import { SavanneDoor } from "./lab/savanneDoor.js";
+
 
 
 export class MainScene extends Scene {
@@ -89,7 +91,8 @@ export class MainScene extends Scene {
         this.add(player)
         this.add(player)
         console.log("spawn");
-        console.log(player);
+        const playerUI = new UI(player)
+        this.add(playerUI)
     }
 
 }

@@ -19,7 +19,9 @@ const Resources = {
     Monkey: new ImageSource('images/tropen/monkeyinfected-sprite.png'),
     Mine: new ImageSource('images/mine.png'),
     Net: new ImageSource('images/tropen/grijs.png'),
-    Tree: new ImageSource('images/tropen/palmboom.png')
+    Tree: new ImageSource('images/tropen/palmboom.png'),
+    Hartred: new ImageSource('images/hartred.png'),
+    Hartgrey: new ImageSource('images/hartgrey.png')
 
 
 

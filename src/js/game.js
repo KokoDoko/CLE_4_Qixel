@@ -29,7 +29,6 @@ export class Game extends Engine {
         this.add('moeras', new MoerasScene())
         this.add('tropen', new TropenScene())
         this.goToScene('game')
-        this.createPlayer()
 
         const fish = new Actor()
         fish.graphics.use(Resources.Fish.toSprite())
@@ -40,15 +39,6 @@ export class Game extends Engine {
     }
     // let bubble = new Bubble()
     // this.add(bubble)
-
-
-    createPlayer() {
-        const player = new Player()
-        this.add(player)
-        this.currentScene.add(player)
-        console.log("spawn");
-        console.log(player);
-    }
 }
 
 new Game()
