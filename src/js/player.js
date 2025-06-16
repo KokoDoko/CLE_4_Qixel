@@ -122,7 +122,7 @@ export class Player extends Actor {
 
             this.vel = vel;
         }
-    }
+    
 
     onInitialize(engine) {
         this.on('collisionstart', (event) => this.hitMonkey(event))
