@@ -5,7 +5,6 @@ const Resources = {
     Fish: new ImageSource('images/fish.png'),
     Player: new ImageSource('images/player-sprite.png'),
     Bubble: new ImageSource('images/bubble.png'),
-    Mine: new ImageSource('images/mine.png'),
     LabBackground: new ImageSource('images/lab/labvloerbasic.png'),
     Obstacle1: new ImageSource('images/lab/labtable1.png'),
     Obstacle2: new ImageSource('images/lab/labtable2.png'),
@@ -15,8 +14,15 @@ const Resources = {
     SwampDoor: new ImageSource('images/lab/moerasdeur.png'),
     PoolDoor: new ImageSource('images/lab/deurbasic.png'),
     SavanneDoor: new ImageSource('images/lab/deurbasic.png'),
-    TropenDoor: new ImageSource('images/lab/deurbasic.png'),
-    Bones: new ImageSource('images/bones.png')
+    TropenDoor: new ImageSource('images/lab/tropen-door.png'),
+    Bones: new ImageSource('images/bones.png'),
+    Monkey: new ImageSource('images/tropen/monkeyinfected-sprite.png'),
+    Mine: new ImageSource('images/mine.png'),
+    Net: new ImageSource('images/tropen/grijs.png'),
+    Tree: new ImageSource('images/tropen/palmboom.png')
+
+
+
 }
 
 const ResourceLoader = new Loader()
