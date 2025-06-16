@@ -8,7 +8,7 @@ export class SavanneDoor extends Actor {
 
     onInitialize(engine) {
         this.graphics.use(Resources.SavanneDoor.toSprite());
-        this.pos = new Vector(900, 100);
+        this.pos = new Vector(900, 90);
         this.scale = new Vector(1.25, 1.25);
 
         this.on("collisionstart", () => {

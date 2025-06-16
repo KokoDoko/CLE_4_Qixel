@@ -1,4 +1,4 @@
-import { Scene, Actor, Vector, Color, CollisionType } from "excalibur";
+import { Scene, Actor, Vector, Color, CollisionType, BoundingBox } from "excalibur";
 import { Resources } from "./resources.js";
 import { Player } from './player.js'
 import { LabBackground } from "./lab/background.js";
@@ -66,11 +66,17 @@ export class MainScene extends Scene {
         // this.createPlayer();
         const player = new Player()
         this.add(player)
+
+        const minX = 0;
+        const maxX = 1240;
+        const minY = 0;
+        const maxY = 920;
+
         this.camera.strategy.lockToActor(player);
+        this.camera.strategy.limitCameraBounds(new BoundingBox(minX, minY, maxX, maxY));
         this.camera.zoom = 1.35;
-
-
     }
+
     // createPlayer() {
     //     const player = new Player()
     //     this.add(player)
