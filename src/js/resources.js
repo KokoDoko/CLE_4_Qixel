@@ -1,5 +1,4 @@
 import { ImageSource, Sound, Resource, Loader } from 'excalibur'
-import { Obstacle1 } from './lab/obstacle1'
 
 // voeg hier jouw eigen resources toe
 const Resources = {
@@ -13,6 +12,10 @@ const Resources = {
     Obstacle3: new ImageSource('images/lab/labtableB.png'),
     Obstacle4: new ImageSource('images/lab/labtablelong.png'),
     Obstacle5: new ImageSource('images/lab/labtablemiddle.png'),
+    SwampDoor: new ImageSource('images/lab/moerasdeur.png'),
+    PoolDoor: new ImageSource('images/lab/deurbasic.png'),
+    SavanneDoor: new ImageSource('images/lab/deurbasic.png'),
+    TropenDoor: new ImageSource('images/lab/deurbasic.png'),
     Bones: new ImageSource('images/bones.png')
 }
 
