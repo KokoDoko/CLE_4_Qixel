@@ -25,7 +25,7 @@ const Resources = {
 
     //player   
     Player: new ImageSource('images/player-sprite.png'),
-    Net: new ImageSource('images/tropen/grijs.png'),
+    Net: new ImageSource('images/tropen/net.png'),
 
     //tropen
     Tropenbg: new ImageSource('images/tropen/junglebg.png'),

@@ -6,6 +6,7 @@ import { PurpleBush } from './purplebush.js'
 import { Monkey } from './monkey.js'
 import { Orchid } from './flower.js'
 import { YellowStone } from "./yellowstone.js";
+import { TropenBackground } from "./background.js";
 
 export class TropenScene extends Scene {
 
@@ -16,6 +17,10 @@ export class TropenScene extends Scene {
 
     onActivate(ctx) {
         this.clear();
+
+        const tropenbg = new TropenBackground({ pos: new Vector(640, 360) });
+        this.add(tropenbg)
+
         const bubble = new Actor({ pos: new Vector(640, 360) });
         bubble.graphics.use(Resources.Bubble.toSprite());
         bubble.on("pointerup", () => {

@@ -19,6 +19,7 @@ export class Game extends Engine {
             displayMode: DisplayMode.FitScreen
         })
         this.start(ResourceLoader).then(() => this.startGame())
+        this.showDebug = true   
     }
 
     startGame() {
