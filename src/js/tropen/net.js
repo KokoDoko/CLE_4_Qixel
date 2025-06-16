@@ -11,7 +11,12 @@ export class Net extends Actor {
     frameCounter
 
     constructor(startPos, direction) {
-        super({ width: Resources.Net.width, height: Resources.Net.height, collisionType: CollisionType.Fixed })
+        super({ 
+            width: Resources.Net.width, 
+            height: Resources.Net.height, 
+            collisionType: CollisionType.Fixed 
+        })
+
         this.graphics.use(Resources.Net.toSprite())
         // let direction = new Vector(1, 0)
 

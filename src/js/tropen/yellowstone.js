@@ -4,7 +4,12 @@ import { Resources } from "../resources.js";
 export class YellowStone extends Actor {
 
     constructor() {
-        super({ width: Resources.Yellowstone.width, height: Resources.Yellowstone.height, collisionType: CollisionType.Fixed })
+        super({ 
+            width: Resources.Yellowstone.width, 
+            height: Resources.Yellowstone.height, 
+            collisionType: CollisionType.Fixed 
+        })
+        
         this.graphics.use(Resources.Yellowstone.toSprite())
         this.pos = new Vector(500, 300)
         this.scale = new Vector(2, 2)
