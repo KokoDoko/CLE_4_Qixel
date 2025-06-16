@@ -8,9 +8,12 @@ import { MainScene } from './mainscene.js'
 import { SavanneScene } from './savanne/savanne.js'
 import { MoerasScene } from './moeras/moeras.js'
 import { TropenScene } from './tropen/tropen.js'
-// import { Mine } from './tropen/obstacle.js'
+import { LabBackground } from './lab/background.js'
+// import { LabBorder } from './lab/labBorder.js'
 
 export class Game extends Engine {
+
+    player;
     constructor() {
         super({
             width: 1240,
@@ -24,32 +27,29 @@ export class Game extends Engine {
 
     startGame() {
         console.log("start de game!")
+
+        // const background = new LabBackground();
+        // this.add(background)
+        // this.add('labBorder', new LabBorder())
+
         this.add('game', new MainScene())
         this.add('pool', new PoolScene())
         this.add('savanne', new SavanneScene())
         this.add('moeras', new MoerasScene())
         this.add('tropen', new TropenScene())
         this.goToScene('game')
-        this.createPlayer()
-
-        const fish = new Actor()
-        fish.graphics.use(Resources.Fish.toSprite())
-        fish.pos = new Vector(500, 300)
-        fish.vel = new Vector(-10, 0)
-        this.add(fish)
-
+        // this.createPlayer()
+        // this.camera.strategy.lockToActor(player);
     }
-    // let bubble = new Bubble()
-    // this.add(bubble)
 
-
-    createPlayer() {
-        const player = new Player()
-        this.add(player)
-        this.currentScene.add(player)
-        console.log("spawn");
-        console.log(player);
-    }
+    // createPlayer() {
+    //     const player = new Player()
+    //     this.add(player)
+    //     this.currentScene.add(player)
+    //     this.currentScene.camera.strategy.lockToActor(player)
+    //     console.log("spawn");
+    //     console.log(player);
+    // }
 }
 
 new Game()

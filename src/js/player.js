@@ -70,19 +70,19 @@ export class Player extends Actor {
             this.graphics.use('runright');
         }
 
-         if (kb.wasPressed(Keys.Space)) {
-               this.catch()
-            }
+        if (kb.wasPressed(Keys.Space)) {
+            this.catch()
+        }
 
         // Override vel now that xspeed/yspeed may have changed
         vel = new Vector(xspeed, yspeed);
 
-        // // Gamepad support
-        // const gamepad = engine.input.gamepads.at(0);
-        // if (gamepad) {
-        //     const deadzone = 0.2;
-        //     let moveX = gamepad.getAxes(Axes.LeftStickX);
-        //     let moveY = gamepad.getAxes(Axes.LeftStickY);
+        // Gamepad support
+        const gamepad = engine.input.gamepads.at(0);
+        if (gamepad) {
+            const deadzone = 0.2;
+            let moveX = gamepad.getAxes(Axes.LeftStickX);
+            let moveY = gamepad.getAxes(Axes.LeftStickY);
 
         //     if (Math.abs(moveX) < deadzone) moveX = 0;
         //     if (Math.abs(moveY) < deadzone) moveY = 0;
@@ -165,10 +165,15 @@ export class Player extends Actor {
         // Implement attack logic here (e.g., play animation, detect hit)
     }
 
-    catch(){
-        let b = new Net()
-        b.pos = new Vector(this.pos.x, this.pos.y)
-        this.scene.add(b)
+    catch() {
+        // let b = new Net()
+        // b.pos = new Vector(this.pos.x, this.pos.y)
+        // this.scene.add(b)
+        // this.scene.add(new Net(this.pos.x + this.width/2, this.pos.y))
+        let direction = new Vector(1, 0);
+        let net = new Net(this.pos, direction);
+        this.scene.add(net);
+
     }
 
     interact() {
