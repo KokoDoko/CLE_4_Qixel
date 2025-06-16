@@ -74,10 +74,22 @@ export class Player extends Actor {
 
             let moveDirection = new Vector(moveX, moveY);
 
-            if (gamepad.isButtonPressed(Buttons.DpadLeft)) moveDirection.x = -1;
-            if (gamepad.isButtonPressed(Buttons.DpadRight)) moveDirection.x = 1;
-            if (gamepad.isButtonPressed(Buttons.DpadUp)) moveDirection.y = -1;
-            if (gamepad.isButtonPressed(Buttons.DpadDown)) moveDirection.y = 1;
+            if (gamepad.isHeld(Buttons.DpadLeft)) {
+                xspeed = -300;
+                this.graphics.use('runleft');            
+            }
+            if (gamepad.isHeld(Buttons.DpadRight)) {
+                xspeed = 300;
+                this.graphics.use('runright');            
+            }
+            if (gamepad.isHeld(Buttons.DpadUp)) {
+                yspeed = -300;
+                this.graphics.use('runup');            
+            }
+            if (gamepad.isHeld(Buttons.DpadDown)) {
+                yspeed = 300;
+                this.graphics.use('rundown');            
+            }
 
             if (!moveDirection.equals(Vector.Zero)) {
                 vel = moveDirection.normalize().scale(speed);
