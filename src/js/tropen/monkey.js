@@ -5,8 +5,8 @@ export class Monkey extends Actor {
  
     constructor() {
         super({
-            width: Resources.Monkey.width,
-            height: Resources.Monkey.height,
+            width: Resources.MutatedMonkey.width,
+            height: Resources.MutatedMonkey.height,
             collisionType: CollisionType.Active
         });
  
@@ -17,7 +17,7 @@ export class Monkey extends Actor {
     
  
         const runSheet = SpriteSheet.fromImageSource({
-            image: Resources.Monkey,
+            image: Resources.MutatedMonkey,
             grid: { rows: 1, columns: 12, spriteWidth: 50, spriteHeight: 250 }
         });
  

@@ -1,10 +1,11 @@
 import { Actor, Scene, Vector } from "excalibur";
 import { Resources } from "../resources.js";
-import { Tree } from './tree.js'
+import { Palmtree } from './tree.js'
 import { Player } from '../player.js'
-import { Bones } from './plant.js'
+import { PurpleBush } from './purplebush.js'
 import { Monkey } from './monkey.js'
-import { Mine } from './flower.js'
+import { Orchid } from './flower.js'
+import { YellowStone } from "./yellowstone.js";
 
 export class TropenScene extends Scene {
 
@@ -27,14 +28,11 @@ export class TropenScene extends Scene {
         let monkey = new Monkey()
         this.add(monkey)
 
-         this.obstaclePositions = [];
+        this.obstaclePositions = [];
 
-        this.positionObstacle(Tree, 5, this.obstaclePositions)
-        this.positionObstacle(Bones, 4, this.obstaclePositions)
-        this.positionObstacle(Mine, 1, this.obstaclePositions)
-
-        // let mine = new Mine()
-        // this.add(mine)
+        this.positionObstacle(Palmtree, 5, this.obstaclePositions)
+        this.positionObstacle(PurpleBush, 4, this.obstaclePositions)
+        this.positionObstacle(Orchid, 1, this.obstaclePositions)
 
         
 
