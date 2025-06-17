@@ -3,6 +3,8 @@ import { Resources, ResourceLoader } from './resources.js'
 import { Monkey } from './tropen/monkey.js'
 import { Orchid } from './tropen/flower.js'
 import { Net } from './tropen/net.js'
+import { Food } from './moeras/food.js'
+import { SwampRose } from './moeras/swampRose.js'
 
 export class Player extends Actor {
 
@@ -10,7 +12,7 @@ export class Player extends Actor {
     health;
 
 
-    constructor(health=3) {
+    constructor(health = 3) {
         super({
             width: Resources.Player.width,
             height: Resources.Player.height,
@@ -75,8 +77,12 @@ export class Player extends Actor {
             this.graphics.use('runright');
         }
 
-        if (kb.wasPressed(Keys.Space)) {
+        if (kb.wasPressed(Keys.Right)) {
             this.catch()
+        }
+
+        if (kb.wasPressed(Keys.Up)) {
+            this.layFood()
         }
 
         // Override vel now that xspeed/yspeed may have changed
@@ -96,19 +102,19 @@ export class Player extends Actor {
 
             if (gamepad.isButtonPressed(Buttons.DpadLeft)) {
                 xspeed = -300;
-                this.graphics.use('runleft');            
+                this.graphics.use('runleft');
             }
             if (gamepad.isButtonPressed(Buttons.DpadRight)) {
                 xspeed = 300;
-                this.graphics.use('runright');            
+                this.graphics.use('runright');
             }
             if (gamepad.isButtonPressed(Buttons.DpadUp)) {
                 yspeed = -300;
-                this.graphics.use('runup');            
+                this.graphics.use('runup');
             }
             if (gamepad.isButtonPressed(Buttons.DpadDown)) {
                 yspeed = 300;
-                this.graphics.use('rundown');            
+                this.graphics.use('rundown');
             }
 
             if (!moveDirection.equals(Vector.Zero)) {
@@ -137,33 +143,40 @@ export class Player extends Actor {
         // Death check
         if (this.health <= 0) {
             this.gameOver();
-                }
+        }
     }
 
-onInitialize(engine) {
-    this.on('collisionstart', (event) => this.hitMonkey(event))
-    this.on('collisionstart', (event) => this.hitFlower(event))
+    onInitialize(engine) {
+        this.on('collisionstart', (event) => this.hitMonkey(event))
+        this.on('collisionstart', (event) => this.hitFlower(event))
 
-}
+    }
 
 
-hitMonkey(event) {
-    if (event.other.owner instanceof Monkey) {
-        if (this.flowerCount > 0) {
-            this.flowerCount -= 1
-            console.log("lost flower")
+    hitMonkey(event) {
+        if (event.other.owner instanceof Monkey) {
+            if (this.flowerCount > 0) {
+                this.flowerCount -= 1
+                console.log("lost flower")
 
-            if (this.scene) {
-                this.scene.positionObstacle(Orchid, 1, this.scene.obstaclePositions);
+                if (this.scene) {
+                    this.scene.positionObstacle(Orchid, 1, this.scene.obstaclePositions);
+                }
             }
         }
     }
-}
 
 
     hitFlower(event) {
         if (event.other.owner instanceof Orchid) {
-            console.log("got flower")
+            console.log("got Orchid")
+            event.other.owner.kill()
+            this.flowerCount += 1
+
+        }
+
+        if (event.other.owner instanceof SwampRose) {
+            console.log("got swampRose")
             event.other.owner.kill()
             this.flowerCount += 1
 
@@ -183,7 +196,7 @@ hitMonkey(event) {
     }
 
 
-    catch () {
+    catch() {
         // let b = new Net()
         // b.pos = new Vector(this.pos.x, this.pos.y)
         // this.scene.add(b)
@@ -194,6 +207,12 @@ hitMonkey(event) {
 
     }
 
+    layFood(){
+        const food = new Food(this.pos.clone());
+        this.scene.add(food);
+
+    }
+
 
     interact() {
         console.log("Interact action triggered");
@@ -201,7 +220,7 @@ hitMonkey(event) {
     }
 
     takeDamage() {
-        this.health-=1;
+        this.health -= 1;
         console.log("Damage taken");
     }
 

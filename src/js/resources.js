@@ -41,8 +41,10 @@ const Resources = {
     Purplebushberries: new ImageSource('images/tropen/paarse-struik-met-bessen.png'),
 
     //moeras
-    Capybara: new ImageSource('images/mine.png'),
-    Greenbush: new ImageSource('images/moeras/groene-bush.png')
+    Capybara: new ImageSource('images/moeras/capyshrek-sprite.png'),
+    Bluebush: new ImageSource('images/moeras/blauwe-bush.png'),
+    Food: new ImageSource('images/mine.png'),
+    SwampRose: new ImageSource('images/bones.png')
 
 
 }
