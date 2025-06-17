@@ -79,6 +79,7 @@ export class Player extends Actor {
 
         if (kb.wasPressed(Keys.Right)) {
             this.catch()
+            // this.takeDamage()
         }
 
         if (kb.wasPressed(Keys.Up)) {
