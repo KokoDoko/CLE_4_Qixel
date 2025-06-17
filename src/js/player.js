@@ -167,8 +167,17 @@ hitMonkey(event) {
             event.other.owner.kill()
             this.flowerCount += 1
 
+            sessionStorage.setItem("orchid", "no")
         }
+
+        if(sessionStorage.key === "orchid"){
+            console.log("got an orchid")
+        }
+
     }
+        
+        
+                
 
 
     jump() {
