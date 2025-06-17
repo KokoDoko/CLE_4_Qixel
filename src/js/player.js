@@ -77,6 +77,7 @@ export class Player extends Actor {
 
         if (kb.wasPressed(Keys.Space)) {
             this.catch()
+            // this.takeDamage()
         }
 
         // Override vel now that xspeed/yspeed may have changed
