@@ -36,9 +36,16 @@ const Resources = {
     MutatedMonkey: new ImageSource('images/tropen/monkeyinfected-sprite.png'),
     Palmtree: new ImageSource('images/tropen/palmboom.png'),
     Orchid: new ImageSource('images/tropen/mockorch.png'),
-    Yellowstone: new ImageSource('images/tropen/rockyel.png'),
+    YellowStone: new ImageSource('images/tropen/rockyel.png'),
     Purplebush: new ImageSource('images/tropen/paarse-struik.png'),
-    Purplebushberries: new ImageSource('images/tropen/paarse-struik-met-bessen.png')
+    Purplebushberries: new ImageSource('images/tropen/paarse-struik-met-bessen.png'),
+
+    //moeras
+    Capybara: new ImageSource('images/moeras/capyshrek-sprite.png'),
+    Bluebush: new ImageSource('images/moeras/blauwe-bush.png'),
+    Food: new ImageSource('images/mine.png'),
+    SwampRose: new ImageSource('images/bones.png')
+
 
 }
 

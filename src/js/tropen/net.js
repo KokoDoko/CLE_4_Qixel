@@ -38,12 +38,8 @@ export class Net extends Actor {
                 this.vel = Vector.Zero; // Stop the net
                 this.stopped = true;
 
-                // this.frameCounter++
-                // if (this.frameCounter > 120) {
-                //     console.log("2 seconden verstreken")
-                //     this.frameCounter = 0
                     this.kill()
-                // }
+            
             }
         }
     }
