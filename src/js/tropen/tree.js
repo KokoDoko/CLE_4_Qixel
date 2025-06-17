@@ -12,8 +12,8 @@ export class Palmtree extends Actor {
         
         this.graphics.use(Resources.Palmtree.toSprite())
         this.pos = new Vector(500, 300)
-        this.scale = new Vector(2.5, 2.5)
-        this.collider.set(Shape.Box(20, 10, Vector.Zero, new Vector(-30, 40)));
+        this.scale = new Vector(3, 3)
+        this.collider.set(Shape.Box(20, 20, Vector.Zero, new Vector(-30, 40)));
 
     }
 

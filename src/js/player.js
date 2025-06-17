@@ -25,7 +25,7 @@ export class Player extends Actor {
 
         this.collider.set(Shape.Box(130, 200));
         this.collider.set(
-            Shape.Box(100, 100, Vector.Zero, new Vector(-23, 10))
+            Shape.Box(100, 150, Vector.Zero, new Vector(-23, -10))
         );
 
         const runSheet = SpriteSheet.fromImageSource({

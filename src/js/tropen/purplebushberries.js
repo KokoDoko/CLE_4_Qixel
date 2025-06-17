@@ -12,7 +12,7 @@ export class PurpleBushBerries extends Actor {
         
         this.graphics.use(Resources.Purplebushberries.toSprite())
          this.pos = new Vector(500, 300)
-         this.scale = new Vector(0.6, 0.6)
+         this.scale = new Vector(1, 1)
         
     }
     
