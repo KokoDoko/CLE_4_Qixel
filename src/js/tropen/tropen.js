@@ -1,4 +1,4 @@
-import { Actor, Scene, Vector } from "excalibur";
+import { Actor, BoundingBox, Color, Rectangle, Scene, Vector } from "excalibur";
 import { Resources } from "../resources.js";
 import { Palmtree } from './tree.js'
 import { Player } from '../player.js'
@@ -7,6 +7,11 @@ import { Monkey } from './monkey.js'
 import { Orchid } from './flower.js'
 import { YellowStone } from "./yellowstone.js";
 import { TropenBackground } from "./background.js";
+import { TropenDoor } from "./door.js";
+import { TropenBorderLeft } from "./tropenBorderLeft.js";
+import { TropenBorderRight } from "./tropenBorderRight.js";
+import { TropenBorderTop } from "./tropenBorderTop.js";
+import { TropenBorderBottom } from "./tropenBorderBottom.js";
 
 export class TropenScene extends Scene {
 
@@ -15,20 +20,22 @@ export class TropenScene extends Scene {
         super()
     }
 
-    onActivate(ctx) {
+    onActivate(ctx, engine, event) {
         this.clear();
 
-        const tropenbg = new TropenBackground({ pos: new Vector(640, 360) });
+        const tropenbg = new TropenBackground({ pos: new Vector(0, 0) });
         this.add(tropenbg)
 
-        const bubble = new Actor({ pos: new Vector(640, 360) });
-        bubble.graphics.use(Resources.Bubble.toSprite());
-        bubble.on("pointerup", () => {
-            ctx.engine.goToScene('game');
-        });
-        this.add(bubble);
+        // const bubble = new Actor({ pos: new Vector(640, 360) });
+        // bubble.graphics.use(Resources.Bubble.toSprite());
+        // bubble.on("pointerup", () => {
+        //     ctx.engine.goToScene('game');
+        // });
+        // this.add(bubble);
+        let tropenDoor = new TropenDoor();
+        this.add(tropenDoor)
 
-        this.createPlayer()
+        // this.createPlayer()
 
         let monkey = new Monkey()
         this.add(monkey)
@@ -39,14 +46,38 @@ export class TropenScene extends Scene {
         this.positionObstacle(PurpleBush, 4, this.obstaclePositions)
         this.positionObstacle(Orchid, 1, this.obstaclePositions)
 
-        
+        // const player = new Player()
+        // this.add(player)
+        const player = new Player();
+        this.pos = new Vector(300, 60);
+        this.width = new Vector(30, 0)
+        this.height = new Vector(30, 0)
 
+        this.add(player)
 
+        const minX = 0;
+        const maxX = 1240;
+        const minY = 0;
+        const maxY = 920;
 
+        this.camera.strategy.lockToActor(player);
+        this.camera.strategy.limitCameraBounds(new BoundingBox(minX, minY, maxX, maxY));
+        this.camera.zoom = 1.35;
 
+        let tropenBorderLeft = new TropenBorderLeft();
+        this.add(tropenBorderLeft)
+
+        let tropenBorderRight = new TropenBorderRight();
+        this.add(tropenBorderRight)
+
+        let tropenBorderTop = new TropenBorderTop();
+        this.add(tropenBorderTop)
+
+        let tropenBorderBottom = new TropenBorderBottom();
+        this.add(tropenBorderBottom)
     }
 
-    positionObstacle(ObstacleClass, number, positions){
+    positionObstacle(ObstacleClass, number, positions) {
         const obstacleCount = number
         const width = 1240
         const height = 920
@@ -82,11 +113,11 @@ export class TropenScene extends Scene {
 
     }
 
-    createPlayer() {
-        const player = new Player()
-        this.add(player)
-        this.add(player)
-        console.log("spawn");
-        console.log(player);
-    }
+    // createPlayer() {
+    //     const player = new Player()
+    //     this.add(player)
+    //     this.add(player)
+    //     console.log("spawn");
+    //     console.log(player);
+    // }
 }
