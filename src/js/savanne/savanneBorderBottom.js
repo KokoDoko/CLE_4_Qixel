@@ -1,6 +1,6 @@
 import { Actor, CollisionType, Color, Rectangle, Shape, Vector } from "excalibur";
 
-export class TropenBorderBottom extends Actor {
+export class SavanneBorderBottom extends Actor {
     constructor() {
         super({})
         this.graphics.use(new Rectangle({ width: 1240, height: 20, color: Color.Transparent }));
