@@ -152,10 +152,10 @@ export class Player extends Actor {
     }
 
 onInitialize(engine) {
-    this.on('collisionstart', (event) => this.hitMonkey(event))
-    this.on('collisionstart', (event) => this.hitFlower(event))
-    this.on('collisionend', (event) => this.leaveFlower(event));
+    this.on('collisionstart', (event) => this.hitMonkey(event));
 
+    this.on('collisionstart', (event) => this.hitFlower(event));
+    this.on('collisionend', (event) => this.leaveFlower(event));
     }
 
 
@@ -191,10 +191,7 @@ onInitialize(engine) {
             console.log("got an orchid")
         }
 
-    }
-        
-        
-                
+    } 
 
 
     leaveFlower(event) {
@@ -202,7 +199,7 @@ onInitialize(engine) {
             this.nearbyFlower = null;
             console.log("Moved away from the flower");
         }
-    }    
+    }
 
 
     jump() {

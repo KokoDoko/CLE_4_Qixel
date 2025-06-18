@@ -4,7 +4,7 @@ import { Resources, ResourceLoader } from './resources.js'
 import { Player } from './player.js'
 import { BoundingBox } from "excalibur"
 import { PoolScene } from './poolgebied/pool.js'
-import { MainScene } from './mainscene.js'
+import { MainScene } from './mainScene.js'
 import { SavanneScene } from './savanne/savanne.js'
 import { MoerasScene } from './moeras/moeras.js'
 import { TropenScene } from './tropen/tropen.js'
