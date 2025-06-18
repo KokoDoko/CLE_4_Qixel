@@ -46,6 +46,7 @@ export class Player extends Actor {
         this.graphics.add("rundown", runDown);
         this.graphics.use(idle); // <-- Now it's defined
 
+        this.nearbyFlower = null;
         this.flowerCount = 0
     }
 
@@ -78,6 +79,9 @@ export class Player extends Actor {
         if (kb.wasPressed(Keys.Space)) {
             this.catch()
             // this.takeDamage()
+        }
+        if (kb.wasPressed(Keys.Q)) {
+            this.interact()
         }
 
         // Override vel now that xspeed/yspeed may have changed
@@ -144,6 +148,7 @@ export class Player extends Actor {
 onInitialize(engine) {
     this.on('collisionstart', (event) => this.hitMonkey(event))
     this.on('collisionstart', (event) => this.hitFlower(event))
+    this.on('collisionend', (event) => this.leaveFlower(event));
 
 }
 
@@ -164,12 +169,18 @@ hitMonkey(event) {
 
     hitFlower(event) {
         if (event.other.owner instanceof Orchid) {
-            console.log("got flower")
-            event.other.owner.kill()
-            this.flowerCount += 1
-
+            this.nearbyFlower = event.other.owner;
+            console.log("Standing near a flower");
         }
     }
+
+
+    leaveFlower(event) {
+        if (event.other.owner === this.nearbyFlower) {
+            this.nearbyFlower = null;
+            console.log("Moved away from the flower");
+        }
+    }    
 
 
     jump() {
@@ -198,8 +209,18 @@ hitMonkey(event) {
 
     interact() {
         console.log("Interact action triggered");
-        // Implement interact logic (e.g., talk to NPCs, open doors)
+        if (this.nearbyFlower) {
+            this.flowerInteract();
+        }
     }
+
+    flowerInteract() {
+        this.nearbyFlower.kill();
+        this.flowerCount += 1;
+        console.log("Picked up flower! Total:", this.flowerCount);
+        this.nearbyFlower = null;
+    }
+    
 
     takeDamage() {
         this.health-=1;
