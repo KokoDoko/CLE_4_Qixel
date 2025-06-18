@@ -16,13 +16,18 @@ import { TropenBorderBottom } from "./tropenBorderBottom.js";
 
 export class TropenScene extends Scene {
 
+    name
+
 
     constructor() {
         super()
+
+        this.name = "tropen"
     }
 
     onActivate(ctx, engine, event) {
         this.clear();
+
 
         const tropenbg = new TropenBackground({ pos: new Vector(0, 0) });
         this.add(tropenbg)
@@ -50,6 +55,7 @@ export class TropenScene extends Scene {
         this.positionObstacle(Orchid, 1, this.obstaclePositions)
         this.positionObstacle(YellowStone, 6, this.obstaclePositions)
         this.positionObstacle(Palmtree, 5, this.obstaclePositions)
+
 
 
 
@@ -83,7 +89,9 @@ export class TropenScene extends Scene {
         this.add(tropenBorderBottom)
     }
 
-    positionObstacle(ObstacleClass, number, positions) {
+
+
+   positionObstacle(ObstacleClass, number, positions) {
         const obstacleCount = number
         const width = 1240
         const height = 920
@@ -119,6 +127,7 @@ export class TropenScene extends Scene {
         }
 
     }
+
 
     // createPlayer() {
     //     const player = new Player()

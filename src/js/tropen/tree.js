@@ -17,6 +17,10 @@ export class Palmtree extends Actor {
 
     }
 
+    onInitialize(){
+        this.collisionType = CollisionType.Active
+    }
+
 
 
 }

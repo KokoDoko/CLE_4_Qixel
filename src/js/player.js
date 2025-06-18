@@ -184,14 +184,14 @@ export class Player extends Actor {
             sessionStorage.setItem("orchid", "no")
         }
 
-        if(sessionStorage.key === "orchid"){
+        if (sessionStorage.key === "orchid") {
             console.log("got an orchid")
         }
 
     }
-        
-        
-                
+
+
+
 
 
     jump() {
@@ -211,16 +211,20 @@ export class Player extends Actor {
         // b.pos = new Vector(this.pos.x, this.pos.y)
         // this.scene.add(b)
         // this.scene.add(new Net(this.pos.x + this.width/2, this.pos.y))
-        let direction = new Vector(1, 0);
-        let net = new Net(this.pos, direction);
-        this.scene.add(net);
+        if (this.scene && ["tropen", "moeras", "pool", "savanne"].includes(this.scene.name)) {
+            let direction = new Vector(1, 0);
+            let net = new Net(this.pos, direction);
+            this.scene.add(net);
+        }
+
 
     }
 
-    layFood(){
+    layFood() {
+         if (this.scene && ["tropen", "moeras", "pool", "savanne"].includes(this.scene.name)) {
         const food = new Food(this.pos.clone());
         this.scene.add(food);
-
+         }
     }
 
 
