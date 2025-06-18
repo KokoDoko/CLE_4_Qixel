@@ -1,5 +1,6 @@
 import { ImageSource, Sound, Resource, Loader } from 'excalibur'
 
+
 // voeg hier jouw eigen resources toe
 const Resources = {
    
@@ -28,6 +29,23 @@ const Resources = {
     Tree: new ImageSource('images/tropen/palmboom.png'),
     Hartred: new ImageSource('images/hartred.png'),
     Hartgrey: new ImageSource('images/hartgrey.png'),
+
+    //discovered icons animals
+    Capydiscover: new ImageSource("images/capyshrekicon.png"),
+    MonkeyDiscover: new ImageSource("images/monkeycaughticon.png"),
+    //: new ImageSource("images/capyshrekicon.png"),
+
+    //discovered icons flowers
+    Orchiddiscover: new ImageSource("images/orchidicon.png"),
+    // Monkeydiscover: new ImageSource("images/capyshrekicon.png"),
+
+
+    //undiscovered icons animals
+    Capyundiscover: new ImageSource("images/capyshrek-bwicon.jpg"),
+    Monkeyundiscover: new ImageSource("images/monkeyiconbw.jpg"),
+
+    //undiscovered icons flowers
+    Orchidundiscover: new ImageSource("images/orchidbwicon.jpg"),
 
     //player   
     Player: new ImageSource('images/player-sprite.png'),

@@ -14,6 +14,7 @@ import { TropenBorderRight } from "./tropenBorderRight.js";
 import { TropenBorderTop } from "./tropenBorderTop.js";
 import { TropenBorderBottom } from "./tropenBorderBottom.js";
 
+
 export class TropenScene extends Scene {
 
     name
@@ -27,8 +28,7 @@ export class TropenScene extends Scene {
 
     onActivate(ctx, engine, event) {
         this.clear();
-
-
+        
         const tropenbg = new TropenBackground({ pos: new Vector(0, 0) });
         this.add(tropenbg)
 
@@ -38,6 +38,8 @@ export class TropenScene extends Scene {
         //     ctx.engine.goToScene('game');
         // });
         // this.add(bubble);
+
+        
         let tropenDoor = new TropenDoor();
         this.add(tropenDoor)
 
