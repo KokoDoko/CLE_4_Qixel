@@ -27,7 +27,7 @@ export class UI extends ScreenElement {
             heartFullImage.load(),
             heartEmptyImage.load(),
 
-            monkeyDiscoverimg.load()
+           
         ]);
 
         // Scale the sprites down (e.g., 50%)
