@@ -9,6 +9,15 @@ import { PoolBorderBottom } from "./poolBorderBottom.js";
 
 export class PoolScene extends Scene {
 
+      name
+
+     constructor() {
+        super()
+        
+         this.name = "pool"
+    }
+
+
     onActivate(ctx) {
         this.clear();
 

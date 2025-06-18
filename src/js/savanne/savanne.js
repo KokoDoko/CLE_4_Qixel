@@ -8,6 +8,16 @@ import { SavanneBorderRight } from "./savanneBorderRight.js";
 import { SavanneBorderLeft } from "./savanneBorderLeft.js";
 
 export class SavanneScene extends Scene {
+
+        name
+
+     constructor() {
+        super()
+        
+         this.name = "savanne"
+    }
+
+
     onActivate(ctx) {
         this.clear();
 

@@ -12,6 +12,17 @@ import { SwampRose } from "./swampRose.js"
 import { SwampDoor } from "./door.js";
 
 export class MoerasScene extends Scene {
+
+    name
+
+    constructor() {
+        super()
+
+         this.name = "moeras"
+    }
+
+
+
     onActivate(ctx) {
         this.clear();
         const bubble = new Actor({ pos: new Vector(640, 360) });
