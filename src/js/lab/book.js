@@ -42,13 +42,8 @@ export class LabBook extends Actor {
             anchor: Vector.Half,
             collisionType: CollisionType.PreventCollision
         });
-        this.popupBg.graphics.use(new Rectangle({
-            width: popupWidth,
-            height: popupHeight,
-            color: Color.White,
-            strokeColor: Color.Black,
-            lineWidth: 4
-        }));
+        this.popupBg.graphics.use(Resources.Book.toSprite());
+        this.popupBg.scale = new Vector(0.75, 0.75);
         engine.currentScene.add(this.popupBg);
 
         // Tekst
@@ -65,7 +60,7 @@ export class LabBook extends Actor {
         const crossSize = 40;
         this.closeBtn = new Label({
             text: "✕",
-            pos: new Vector(centerX - popupWidth / 1.9 + crossSize, centerY - popupHeight / 1.75 + crossSize),
+            pos: new Vector(centerX - popupWidth / 2.5 + crossSize, centerY - popupHeight / 1.4 + crossSize),
             font: new Font({ size: crossSize, color: Color.Black }),
             z: 10000,
             anchor: Vector.Half
@@ -82,7 +77,7 @@ export class LabBook extends Actor {
         // Linkerpijl
         this.leftArrow = new Label({
             text: "<",
-            pos: new Vector(centerX - popupWidth / 2 + arrowSize, arrowY),
+            pos: new Vector(centerX - popupWidth / 2.5 + arrowSize, arrowY),
             font: new Font({ size: arrowSize, color: this.currentPage > 0 ? Color.Black : Color.Gray }),
             z: 10000,
             anchor: Vector.Half
@@ -99,7 +94,7 @@ export class LabBook extends Actor {
         // Rechterpijl
         this.rightArrow = new Label({
             text: ">",
-            pos: new Vector(centerX + popupWidth / 2 - arrowSize, arrowY),
+            pos: new Vector(centerX + popupWidth / 2.65 - arrowSize, arrowY),
             font: new Font({ size: arrowSize, color: this.currentPage < this.pages.length - 1 ? Color.Black : Color.Gray }),
             z: 10000,
             anchor: Vector.Half
