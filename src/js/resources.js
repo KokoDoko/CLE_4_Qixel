@@ -11,6 +11,8 @@ const Resources = {
     Obstacle3: new ImageSource('images/lab/labtableB.png'),
     Obstacle4: new ImageSource('images/lab/labtablelong.png'),
     Obstacle5: new ImageSource('images/lab/labtablemiddle.png'),
+    Book: new ImageSource('images/lab/book.png'),
+
  
     //lab deuren
     SwampDoor: new ImageSource('images/lab/moerasdeur.png'),
