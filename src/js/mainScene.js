@@ -19,6 +19,7 @@ import { LabBorderTop } from "./lab/labBorderTop.js";
 
 
 
+
 export class MainScene extends Scene {
     onActivate(ctx) {
         this.clear();
@@ -65,6 +66,8 @@ export class MainScene extends Scene {
         let labBorderTop = new LabBorderTop();
         this.add(labBorderTop)
 
+        
+
         this.createPlayer();
     }
 
@@ -79,9 +82,14 @@ export class MainScene extends Scene {
         this.camera.strategy.lockToActor(player);
         this.camera.strategy.limitCameraBounds(new BoundingBox(minX, minY, maxX, maxY));
         this.camera.zoom = 1.35;
+        console.log(sessionStorage.getItem("flower"))
+        console.log("spawn2")
         console.log("spawn");
+       
         const playerUI = new UI(player)
         this.add(playerUI)
+
+      
     }
 
 }

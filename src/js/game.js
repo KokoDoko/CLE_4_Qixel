@@ -9,7 +9,9 @@ import { SavanneScene } from './savanne/savanne.js'
 import { MoerasScene } from './moeras/moeras.js'
 import { TropenScene } from './tropen/tropen.js'
 import { LabBackground } from './lab/background.js'
+
 // import { LabBorder } from './lab/labBorder.js'
+
 
 export class Game extends Engine {
 
@@ -40,6 +42,7 @@ export class Game extends Engine {
         this.goToScene('game')
         // this.createPlayer()
         // this.camera.strategy.lockToActor(player);
+    
     }
 
     // createPlayer() {
