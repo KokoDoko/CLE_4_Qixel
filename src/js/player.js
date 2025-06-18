@@ -55,75 +55,81 @@ export class Player extends Actor {
     onPreUpdate(engine) {
         let xspeed = 0;
         let yspeed = 0;
-        let speed = 300;
-        let vel = new Vector(xspeed, yspeed); // FIXED
+        const speed = 300;
         let kb = engine.input.keyboard;
 
-        this.graphics.use('idle');
+        let animSet = false;
 
+        // --- Keyboard movement ---
         if (kb.isHeld(Keys.W)) {
             yspeed = -300;
             this.graphics.use('runup');
+            animSet = true;
         }
         if (kb.isHeld(Keys.S)) {
             yspeed = 300;
             this.graphics.use('rundown');
+            animSet = true;
         }
         if (kb.isHeld(Keys.A)) {
             xspeed = -300;
             this.graphics.use('runleft');
+            animSet = true;
         }
         if (kb.isHeld(Keys.D)) {
             xspeed = 300;
             this.graphics.use('runright');
+            animSet = true;
         }
 
-        if (kb.wasPressed(Keys.Right)) {
-            this.catch()
-            // this.takeDamage()
-        }
-        if (kb.wasPressed(Keys.Q)) {
-            this.interact()
-        }
+        if (kb.wasPressed(Keys.Right)) this.catch();
+        if (kb.wasPressed(Keys.Q)) this.interact();
+        if (kb.wasPressed(Keys.Up)) this.layFood();
 
-        if (kb.wasPressed(Keys.Up)) {
-            this.layFood()
-        }
-
-        // Override vel now that xspeed/yspeed may have changed
-        vel = new Vector(xspeed, yspeed);
-
-        // Gamepad support
+        // --- Gamepad support ---
         const gamepad = engine.input.gamepads.at(0);
         if (gamepad) {
             const deadzone = 0.2;
             let moveX = gamepad.getAxes(Axes.LeftStickX);
             let moveY = gamepad.getAxes(Axes.LeftStickY);
 
-            if (Math.abs(moveX) < deadzone) moveX = 0;
-            if (Math.abs(moveY) < deadzone) moveY = 0;
+            if (Math.abs(moveX) > deadzone) {
+                xspeed = moveX * speed;
+            }
+            if (Math.abs(moveY) > deadzone) {
+                yspeed = moveY * speed;
+            }
 
-            let moveDirection = new Vector(moveX, moveY);
-
+            // D-Pad overrides or adds to movement
             if (gamepad.isButtonPressed(Buttons.DpadLeft)) {
-                xspeed = -300;
+                xspeed = -speed;
                 this.graphics.use('runleft');
+                animSet = true;
             }
             if (gamepad.isButtonPressed(Buttons.DpadRight)) {
-                xspeed = 300;
+                xspeed = speed;
                 this.graphics.use('runright');
+                animSet = true;
             }
             if (gamepad.isButtonPressed(Buttons.DpadUp)) {
-                yspeed = -300;
+                yspeed = -speed;
                 this.graphics.use('runup');
+                animSet = true;
             }
             if (gamepad.isButtonPressed(Buttons.DpadDown)) {
-                yspeed = 300;
+                yspeed = speed;
                 this.graphics.use('rundown');
+                animSet = true;
             }
 
-            if (!moveDirection.equals(Vector.Zero)) {
-                vel = moveDirection.normalize().scale(speed);
+            // Left stick animation if not overridden by D-pad
+            if (!animSet && (moveX !== 0 || moveY !== 0)) {
+                if (Math.abs(moveX) > Math.abs(moveY)) {
+                    this.graphics.use(moveX < 0 ? 'runleft' : 'runright');
+                } else {
+                    this.graphics.use(moveY < 0 ? 'runup' : 'rundown');
+                }
+                animSet = true;
             }
 
             if (gamepad.isButtonPressed(Buttons.Face1)) this.jump();
@@ -134,11 +140,13 @@ export class Player extends Actor {
         // Final velocity clamp
         if (!vel.equals(Vector.Zero)) {
             vel = vel.normalize().scale(speed);
+        } else if (!animSet) {
+            this.graphics.use('idle');
         }
 
         this.vel = vel;
 
-        // Reduce health if colliding with an enemy every second
+        // Damage from enemy collision
         if (this.isCollidingWithEnemy && Date.now() - this.lastHitTime >= 1000) {
             this.health -= this.collidingEnemy.attack;
             this.lastHitTime = Date.now();
@@ -150,6 +158,8 @@ export class Player extends Actor {
             this.gameOver();
         }
     }
+    
+
 
 onInitialize(engine) {
     this.on('collisionstart', (event) => this.hitMonkey(event));
