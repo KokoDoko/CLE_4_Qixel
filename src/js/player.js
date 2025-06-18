@@ -138,6 +138,7 @@ export class Player extends Actor {
         }
 
         // Final velocity clamp
+        let vel = new Vector(xspeed, yspeed);
         if (!vel.equals(Vector.Zero)) {
             vel = vel.normalize().scale(speed);
         } else if (!animSet) {
@@ -145,6 +146,7 @@ export class Player extends Actor {
         }
 
         this.vel = vel;
+
 
         // Damage from enemy collision
         if (this.isCollidingWithEnemy && Date.now() - this.lastHitTime >= 1000) {
