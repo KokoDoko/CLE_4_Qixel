@@ -3,6 +3,7 @@ import { Resources } from "../resources.js";
 import { Palmtree } from './tree.js'
 import { Player } from '../player.js'
 import { PurpleBush } from './purplebush.js'
+import { PurpleBushBerries } from './purplebushberries.js'
 import { Monkey } from './monkey.js'
 import { Orchid } from './flower.js'
 import { YellowStone } from "./yellowstone.js";
@@ -36,24 +37,29 @@ export class TropenScene extends Scene {
         this.add(tropenDoor)
 
         // this.createPlayer()
+        const player = new Player();
+        this.add(player)
 
         let monkey = new Monkey()
         this.add(monkey)
 
         this.obstaclePositions = [];
 
-        this.positionObstacle(Palmtree, 5, this.obstaclePositions)
         this.positionObstacle(PurpleBush, 4, this.obstaclePositions)
+        this.positionObstacle(PurpleBushBerries, 4, this.obstaclePositions)
         this.positionObstacle(Orchid, 1, this.obstaclePositions)
+        this.positionObstacle(YellowStone, 6, this.obstaclePositions)
+        this.positionObstacle(Palmtree, 5, this.obstaclePositions)
+
+
+
 
         // const player = new Player()
         // this.add(player)
-        const player = new Player();
         this.pos = new Vector(300, 60);
         this.width = new Vector(30, 0)
         this.height = new Vector(30, 0)
 
-        this.add(player)
 
         const minX = 0;
         const maxX = 1240;
@@ -81,10 +87,11 @@ export class TropenScene extends Scene {
         const obstacleCount = number
         const width = 1240
         const height = 920
-        let minDistance = 100;
+        // let minDistance = 100;
         // let positions = [];
-        const obstacleSize = 64
+        const obstacleSize = 100
         const margin = obstacleSize / 2;
+        const minDistance = obstacleSize
 
         function isFarEnough(x, y) {
             for (let i = 0; i < positions.length; i++) {

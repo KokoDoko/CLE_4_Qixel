@@ -18,6 +18,7 @@ import { LabBorderRight } from "./lab/labBorderRight.js";
 import { LabBorderTop } from "./lab/labBorderTop.js";
 import { LabBook } from "./lab/book.js";
 
+
 export class MainScene extends Scene {
     onActivate(ctx) {
         this.clear();

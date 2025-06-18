@@ -2,7 +2,7 @@ import '../css/style.css'
 import { Actor, Engine, Vector, DisplayMode } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 import { PoolScene } from './poolgebied/pool.js'
-import { MainScene } from './mainscene.js'
+import { MainScene } from './mainScene.js'
 import { SavanneScene } from './savanne/savanne.js'
 import { MoerasScene } from './moeras/swamp.js'
 import { TropenScene } from './tropen/tropen.js'
