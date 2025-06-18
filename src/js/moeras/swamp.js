@@ -9,7 +9,7 @@ import { SwampBorderTop } from "./swampBorderTop.js";
 import { SwampBorderBottom } from "./swampBorderBottom.js";
 import { BlueBush } from "./bluebush.js"
 import { SwampRose } from "./swampRose.js"
-import { SwampDoor } from "../lab/swampDoor.js";
+import { SwampDoor } from "./door.js";
 
 export class MoerasScene extends Scene {
     onActivate(ctx) {
@@ -31,6 +31,9 @@ export class MoerasScene extends Scene {
 
         this.positionObstacle(SwampRose, 1, this.obstaclePositions)
 
+        let swampDoor = new SwampDoor();
+        this.add(swampDoor)
+
         const player = new Player();
         this.pos = new Vector(300, 60);
         this.width = new Vector(30, 0)
@@ -41,10 +44,6 @@ export class MoerasScene extends Scene {
         const playerUI = new UI(player)
         this.add(playerUI)
 
-        this.clear();
-
-        let swampDoor = new SwampDoor();
-        this.add(swampDoor)
 
         const minX = 0;
         const maxX = 1240;
