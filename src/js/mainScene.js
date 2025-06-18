@@ -16,7 +16,6 @@ import { SavanneDoor } from "./lab/savanneDoor.js";
 import { LabBorderLeft } from "./lab/labBorderLeft.js";
 import { LabBorderRight } from "./lab/labBorderRight.js";
 import { LabBorderTop } from "./lab/labBorderTop.js";
-import { Book } from "./lab/book.js";
 
 
 
@@ -67,8 +66,6 @@ export class MainScene extends Scene {
         let labBorderTop = new LabBorderTop();
         this.add(labBorderTop)
 
-        let book = new Book();
-        this.add(book)
 
 
         this.createPlayer();
