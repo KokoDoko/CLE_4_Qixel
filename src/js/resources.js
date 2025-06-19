@@ -13,6 +13,9 @@ const Resources = {
     Obstacle5: new ImageSource('images/lab/labtablemiddle.png'),
     Book: new ImageSource('images/lab/book.png'),
 
+    // heart image
+    HeartFullImage : new ImageSource('images/hartred.png'),
+    HeartEmptyImage : new ImageSource('images/hartgrey.png'),
  
     //lab deuren
     SwampDoor: new ImageSource('images/lab/moerasdeur.png'),
@@ -33,19 +36,12 @@ const Resources = {
     //discovered icons animals
     Capydiscover: new ImageSource("images/capyshrekicon.png"),
     MonkeyDiscover: new ImageSource("images/monkeycaughticon.png"),
-    //: new ImageSource("images/capyshrekicon.png"),
-
-    //discovered icons flowers
     Orchiddiscover: new ImageSource("images/orchidicon.png"),
-    // Monkeydiscover: new ImageSource("images/capyshrekicon.png"),
-
 
     //undiscovered icons animals
-    Capyundiscover: new ImageSource("images/capyshrek-bwicon.jpg"),
-    Monkeyundiscover: new ImageSource("images/monkeyiconbw.jpg"),
-
-    //undiscovered icons flowers
-    Orchidundiscover: new ImageSource("images/orchidbwicon.jpg"),
+    Capyundiscover: new ImageSource("images/capyshrekicon-bw.png"),
+    Monkeyundiscover: new ImageSource("images/monkeycaughticon-bw.png"),
+    Orchidundiscover: new ImageSource("images/orchidicon-bw.png"),
 
     //player   
     Player: new ImageSource('images/player-sprite.png'),

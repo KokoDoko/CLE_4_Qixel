@@ -15,6 +15,7 @@ export class Game extends Engine {
             width: 1240,
             height: 920,
             maxFps: 60,
+            pixelRatio:1, 
             displayMode: DisplayMode.FitScreen
         })
         this.start(ResourceLoader).then(() => this.startGame())
