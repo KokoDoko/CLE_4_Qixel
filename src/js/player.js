@@ -160,18 +160,17 @@ export class Player extends Actor {
             this.gameOver();
         }
 
-        if(sessionStorage.key === "flower"){
+        if (sessionStorage.key === "flower") {
             console.log("got an orchid")
-        }  
+        }
     }
-    
 
 
-onInitialize(engine) {
-    this.on('collisionstart', (event) => this.hitMonkey(event));
 
-    this.on('collisionstart', (event) => this.hitFlower(event));
-    this.on('collisionend', (event) => this.leaveFlower(event));
+    onInitialize(engine) {
+        this.on('collisionstart', (event) => this.hitMonkey(event));
+        this.on('collisionstart', (event) => this.hitFlower(event));
+        this.on('collisionend', (event) => this.leaveFlower(event));
     }
 
 
@@ -198,32 +197,21 @@ onInitialize(engine) {
             console.log(sessionStorage.getItem("flower"))
             event.other.owner.kill()
             this.flowerCount += 1
-            
-        }
 
+        }
         if (event.other.owner instanceof SwampRose) {
             console.log("got swampRose")
             event.other.owner.kill()
             this.flowerCount += 1
-
-            
         }
-
-        
-
     }
-        
 
-    
     leaveFlower(event) {
         if (event.other.owner === this.nearbyFlower) {
             this.nearbyFlower = null;
             console.log("Moved away from the flower");
         }
     }
-        
-                
-
 
     jump() {
         console.log("Jump action triggered");
@@ -252,10 +240,10 @@ onInitialize(engine) {
     }
 
     layFood() {
-         if (this.scene && ["tropen", "moeras", "pool", "savanne"].includes(this.scene.name)) {
-        const food = new Food(this.pos.clone());
-        this.scene.add(food);
-         }
+        if (this.scene && ["tropen", "moeras", "pool", "savanne"].includes(this.scene.name)) {
+            const food = new Food(this.pos.clone());
+            this.scene.add(food);
+        }
     }
 
 
@@ -272,20 +260,20 @@ onInitialize(engine) {
         console.log("Picked up flower! Total:", this.flowerCount);
         this.nearbyFlower = null;
     }
-    
+
 
     takeDamage() {
         this.health -= 1;
         console.log("Damage taken");
     }
 
-    onCollisionStart(event) {
-        console.log('Geraakt door:', event.other);
-    }
+    // onCollisionStart(event) {
+    //     console.log('Geraakt door:', event.other);
+    // }
 
-    onCollisionEnd(event) {
+    // onCollisionEnd(event) {
 
-    }
+    // }
 
 
     gameOver() {

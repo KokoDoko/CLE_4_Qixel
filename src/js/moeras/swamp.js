@@ -19,8 +19,14 @@ export class MoerasScene extends Scene {
 
     constructor() {
         super()
-
         this.name = "moeras"
+    }
+
+    onInitialize() {
+        // voorbeeld aanpassen playerprogress
+        // 0 = capybara, 1 = monkey, 2 = orchid
+        this.engine.playerProgress[0] = true
+        console.log(this.engine.playerProgress)
     }
 
 

@@ -22,6 +22,9 @@ export class Game extends Engine {
     }
 
     startGame() {
+        // capybara, monkey, orchid discovery 
+        this.playerProgress = [false, false, false]
+
         console.log("start de game!")
         this.add('game', new MainScene())
         this.add('pool', new PoolScene())

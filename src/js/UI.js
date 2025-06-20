@@ -10,9 +10,9 @@ export class UI extends ScreenElement {
 
         // capybara, monkey, orchid discovery 
         this.discoverySprites = [
-            { name: "capybara", discovered: false, spriteOff: Resources.Capyundiscover.toSprite(), spriteOn: Resources.Capydiscover.toSprite() },
-            { name: "monkey", discovered: true, spriteOff: Resources.Monkeyundiscover.toSprite(), spriteOn: Resources.MonkeyDiscover.toSprite() },
-            { name: "orchid", discovered: false, spriteOff: Resources.Orchidundiscover.toSprite(), spriteOn: Resources.Orchiddiscover.toSprite() },
+            { name: "capybara", spriteOff: Resources.Capyundiscover.toSprite(), spriteOn: Resources.Capydiscover.toSprite() },
+            { name: "monkey", spriteOff: Resources.Monkeyundiscover.toSprite(), spriteOn: Resources.MonkeyDiscover.toSprite() },
+            { name: "orchid", spriteOff: Resources.Orchidundiscover.toSprite(), spriteOn: Resources.Orchiddiscover.toSprite() },
         ]
     }
 
@@ -22,7 +22,10 @@ export class UI extends ScreenElement {
         this.heartFull.scale.setTo(0.15, 0.15);
         this.heartEmpty = Resources.HeartEmptyImage.toSprite();
         this.heartEmpty.scale.setTo(0.15, 0.15);
+        this.updateProgress()
+    }
 
+    updateProgress(){
         // toon huidige heart / discovery status
         this.removeAllChildren()
         this.updateHearts();
@@ -58,13 +61,16 @@ export class UI extends ScreenElement {
     }
 
     showAnimalPortraits(){
-        for (let i = 0; i < this.discoverySprites.length; i++) {
-            let check = this.discoverySprites[i]
+        // get the player progress from the main game
+        let progress = this.scene.engine.playerProgress
+        console.log(`ui shows player progress`)
+        console.log(progress)
+        for (let i = 0; i < progress.length; i++) {
             const discovery = new Actor({
                 pos: new Vector(50 + i * 70, 90), 
                 anchor: new Vector(0, 0)
             });
-            discovery.graphics.use(check.discovered ? check.spriteOn : check.spriteOff);
+            discovery.graphics.use(progress[i] === true ? this.discoverySprites[i].spriteOn : this.discoverySprites[i].spriteOff);
             discovery.z = 10;
             this.addChild(discovery);
         }
